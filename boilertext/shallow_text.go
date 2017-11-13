@@ -2,7 +2,6 @@ package boilertext
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"io"
 	"strings"
@@ -13,14 +12,14 @@ import (
 )
 
 type TextBlock struct {
-	NumOfWords           int
-	NumOfAnchorTextWords int
-	Content              []byte
+	NumOfWords       int
+	NumOfAnchorWords int
+	Content          string
 }
 
 func (t *TextBlock) LinkDensity() float64 {
-	if t.NumOfWords != 0 && t.NumOfAnchorTextWords != 0 {
-		return float64(t.NumOfAnchorTextWords) / float64(t.NumOfWords)
+	if t.NumOfWords != 0 && t.NumOfAnchorWords != 0 {
+		return float64(t.NumOfAnchorWords) / float64(t.NumOfWords)
 	}
 
 	return 0.0
@@ -31,37 +30,58 @@ type ShallowTextExtractor struct {
 }
 
 // Process takes raw HTML as an input and returns content text of that HTML minus the boilerplate.
-func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
+func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 	node, err := html.Parse(reader)
-
 	if err != nil {
-		return nil, errors.Wrap(err, "Parse HTML error")
+		return "", errors.Wrap(err, "Parse HTML error")
 	}
 
 	blocks := make([]*TextBlock, 0, 20)
-	var bufferText bytes.Buffer
-	var bufferAnchorText bytes.Buffer
+	var bufferText string
+	var bufferAnchorText string
+
+	blockCount := 0
 
 	var f func(n *html.Node)
 	f = func(n *html.Node) {
 		if n.Type == html.TextNode {
-			fmt.Println("Text Node:", "Parent", n.Parent.DataAtom, "Data", n.Data, "NextSibling", n.NextSibling)
+			trimmedData := strings.TrimSpace(n.Data)
+			if trimmedData != "" {
+				fmt.Println("TEXT NODE", "Parent:", n.Parent.DataAtom, "Data:", n.Data, "NextSibling:", n.NextSibling)
+			}
+
 			switch n.Parent.DataAtom {
 			case atom.A:
-				bufferText.WriteString(strings.TrimSpace(n.Data))
-				bufferAnchorText.WriteString(strings.TrimSpace(n.Data))
-			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font:
-				bufferText.WriteString(strings.TrimSpace(n.Data))
+				fmt.Println("ANCHOR", n.Data)
+				if trimmedData != "" {
+					bufferText += n.Data
+					bufferAnchorText += n.Data
+				}
+			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
+				// Don't append whitespace
+				if trimmedData != "" {
+					fmt.Println("INLINE", n.Data)
+					bufferText += n.Data
+				}
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
 				// Ignore
 			default:
 				// Generate a new block
-				bufferText.WriteString(strings.TrimSpace(n.Data))
+				if trimmedData != "" {
+					bufferText += n.Data
+					fmt.Println("DEFAULT BLOCK DATA", n.Data)
+				}
 
 				// Retrieve bytes
-				bufferTextBytes := bufferText.Bytes()
 
-				textScanner := bufio.NewScanner(bytes.NewReader(bufferTextBytes))
+				// Quit if nothing here
+				if len(bufferText) == 0 {
+					bufferText = ""
+					bufferAnchorText = ""
+					return
+				}
+
+				textScanner := bufio.NewScanner(strings.NewReader(bufferText))
 				// Set the split function for the scanning operation.
 				textScanner.Split(bufio.ScanWords)
 				// Count the words.
@@ -70,7 +90,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 					textCount++
 				}
 
-				anchorTextScanner := bufio.NewScanner(&bufferAnchorText)
+				anchorTextScanner := bufio.NewScanner(strings.NewReader(bufferAnchorText))
 				// Set the split function for the scanning operation.
 				anchorTextScanner.Split(bufio.ScanWords)
 				// Count the words.
@@ -80,14 +100,17 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 				}
 
 				blocks = append(blocks, &TextBlock{
-					NumOfWords:           textCount,
-					NumOfAnchorTextWords: anchorTextCount,
-					Content:              bufferTextBytes,
+					NumOfWords:       textCount,
+					NumOfAnchorWords: anchorTextCount,
+					Content:          bufferText,
 				})
+				blockCount++
+
+				fmt.Println("NEW BLOCK CONTENT", bufferText, "COUNT", blockCount)
 
 				// Reset buffers
-				bufferText.Reset()
-				bufferAnchorText.Reset()
+				bufferText = ""
+				bufferAnchorText = ""
 			}
 		}
 
@@ -100,10 +123,12 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 
 	// Block processing complete. Let's gather the wheat and discard the chaff.
 
-	var contentText bytes.Buffer
-	var prev, next *TextBlock
-	for i, curr := range blocks {
-		fmt.Println("Block content", string(curr.Content))
+	var contentText string
+	var curr, prev, next *TextBlock
+	fmt.Println("BLOCK LENGTH", len(blocks))
+	for i := range blocks {
+		curr = blocks[i]
+		fmt.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", string(curr.Content))
 
 		if i == 0 {
 			prev = nil
@@ -148,10 +173,9 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 		}
 
 		if isContent {
-			contentText.Write(curr.Content)
-			contentText.WriteString(" ")
+			contentText += curr.Content
 		}
 	}
 
-	return contentText.Bytes(), nil
+	return contentText, nil
 }
