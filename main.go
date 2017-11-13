@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("sample/boilerpipe.html")
+	file, err := os.Open("sample/" + os.Args[1])
 	if err != nil {
 		log.Fatal("Failed to open file")
 	}
@@ -20,5 +20,5 @@ func main() {
 		log.Fatal("Extractor failed")
 	}
 
-	fmt.Println("Result", res)
+	fmt.Println("Result", string(res))
 }

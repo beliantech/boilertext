@@ -58,10 +58,10 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 				// Generate a new block
 				bufferText.WriteString(strings.TrimSpace(n.Data))
 
-				var copyBufferText bytes.Buffer
-				io.TeeReader(&bufferText, &copyBufferText)
+				// Retrieve bytes
+				bufferTextBytes := bufferText.Bytes()
 
-				textScanner := bufio.NewScanner(&bufferText)
+				textScanner := bufio.NewScanner(bytes.NewReader(bufferTextBytes))
 				// Set the split function for the scanning operation.
 				textScanner.Split(bufio.ScanWords)
 				// Count the words.
@@ -82,8 +82,12 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 				blocks = append(blocks, &TextBlock{
 					NumOfWords:           textCount,
 					NumOfAnchorTextWords: anchorTextCount,
-					Content:              copyBufferText.Bytes(),
+					Content:              bufferTextBytes,
 				})
+
+				// Reset buffers
+				bufferText.Reset()
+				bufferAnchorText.Reset()
 			}
 		}
 
@@ -99,6 +103,8 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 	var contentText bytes.Buffer
 	var prev, next *TextBlock
 	for i, curr := range blocks {
+		fmt.Println("Block content", string(curr.Content))
+
 		if i == 0 {
 			prev = nil
 		} else {
