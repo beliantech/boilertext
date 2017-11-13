@@ -8,6 +8,19 @@ import (
 	"golang.org/x/net/html"
 )
 
+type TextBlock struct {
+	NumOfWords           int
+	NumOfAnchorTextWords int
+}
+
+func (t TextBlock) LinkDensity() float64 {
+	if t.NumOfWords != 0 && t.NumOfAnchorTextWords != 0 {
+		return float64(t.NumOfAnchorTextWords) / float64(t.NumOfWords)
+	}
+
+	return 0.0
+}
+
 // ShallowTextExtractor is an implementation of BoilerText
 type ShallowTextExtractor struct {
 }
@@ -23,9 +36,9 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 	var f func(n *html.Node)
 	f = func(n *html.Node) {
 		if n.Type == html.ElementNode {
-			fmt.Println(n)
+			fmt.Println("Element Node", "DataAtom", n.DataAtom, "Data", n.Data)
 		} else if n.Type == html.TextNode {
-			fmt.Println(n)
+			fmt.Println("Text Node", "DataAtom", n.DataAtom, "Data", n.Data)
 		}
 
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
