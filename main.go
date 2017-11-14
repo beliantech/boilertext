@@ -32,5 +32,5 @@ func main() {
 		log.Fatal("Extractor failed")
 	}
 
-	fmt.Println("RESULT", string(res))
+	fmt.Println("RESULT", res)
 }

@@ -6,6 +6,10 @@ The reference implementation is found in https://github.com/PageDash/boilerpipe 
 
 By no means idiomatic Go. We'll get there. PRs welcome to clean up stuff or to add new algorithms.
 
+## How to use
+
+See example usage in https://github.com/PageDash/boilertext/blob/master/main.go
+
 ## Language Support (Split Strategy)
 
 There are two possible split strategies that you will want to consider. For English and English-like languages (which consists of words formed by a sequence of characters), the `bufio.ScanWords` `SplitFunc` is appropriate. For languages such as Chinese and Japanese (which consists of rune characters), use the `bufio.ScanRunes` `SplitFunc` to obtain the desired result. Obviously this is a simplistic view, but we gotta start somewhere.
