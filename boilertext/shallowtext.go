@@ -148,7 +148,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 	var curr, prev, next *TextBlock
 	for i := range blocks {
 		curr = blocks[i]
-		logger.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", string(curr.Content))
+		logger.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", curr.Content)
 
 		if i == 0 {
 			prev = nil
