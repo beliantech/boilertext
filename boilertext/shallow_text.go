@@ -3,10 +3,10 @@ package boilertext
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"io"
 	"strings"
 
+	"github.com/PageDash/boilertext/logger"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
@@ -75,19 +75,19 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 		if n.Type == html.TextNode {
 			trimmedData := strings.TrimSpace(n.Data)
 			if trimmedData != "" {
-				fmt.Println("TEXT NODE", "Parent:", n.Parent.DataAtom, "Data:", n.Data, "NextSibling:", n.NextSibling)
+				logger.Println("TEXT NODE", "Parent:", n.Parent.DataAtom, "Data:", n.Data, "NextSibling:", n.NextSibling)
 			}
 
 			switch n.Parent.DataAtom {
 			case atom.A:
 				if trimmedData != "" {
-					fmt.Println("ANCHOR", n.Data)
+					logger.Println("ANCHOR", n.Data)
 					bufferAppend(n.Data, true)
 				}
 			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
 				// Don't append whitespace
 				if trimmedData != "" {
-					fmt.Println("INLINE", n.Data)
+					logger.Println("INLINE", n.Data)
 					bufferAppend(n.Data, false)
 				}
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
@@ -95,7 +95,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 			default:
 				// Generate a new block
 				if trimmedData != "" {
-					fmt.Println("DEFAULT BLOCK DATA", n.Data)
+					logger.Println("DEFAULT BLOCK DATA", n.Data)
 					bufferAppend(n.Data, false)
 				}
 
@@ -154,7 +154,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 	var curr, prev, next *TextBlock
 	for i := range blocks {
 		curr = blocks[i]
-		fmt.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", string(curr.Content))
+		logger.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", string(curr.Content))
 
 		if i == 0 {
 			prev = nil
