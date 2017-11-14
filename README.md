@@ -13,3 +13,7 @@ There are two possible split strategies that you will want to consider. For Engl
 Note that the research algorithm was based on the English language. YMMV for other languages. We found that replacing word split with rune split for runic languages performed decently.
 
 See https://github.com/abadojack/whatlanggo for language detection feature support.
+
+## Performance
+
+I did a benchmark, and it actually shows that naive string concatenation is faster than bytes.Buffer. And since most HTML is sort of lightweight with hundreds of text blocks, string concatenation will be just fine. My results corroborate with https://github.com/hermanschaaf/go-string-concat-benchmarks.
