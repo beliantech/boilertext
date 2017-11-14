@@ -27,6 +27,13 @@ func (t *TextBlock) LinkDensity() float64 {
 
 // ShallowTextExtractor is an implementation of BoilerText
 type ShallowTextExtractor struct {
+	splitStrategy bufio.SplitFunc
+}
+
+func NewShallowTextExtractor(splitStrategy bufio.SplitFunc) *ShallowTextExtractor {
+	return &ShallowTextExtractor{
+		splitStrategy: splitStrategy,
+	}
 }
 
 // Process takes raw HTML as an input and returns content text of that HTML minus the boilerplate.
@@ -99,7 +106,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 				textScanner := bufio.NewScanner(strings.NewReader(bufferText))
 				// Set the split function for the scanning operation.
-				textScanner.Split(bufio.ScanWords)
+				textScanner.Split(s.splitStrategy)
 				// Count the words.
 				textCount := 0
 				for textScanner.Scan() {
@@ -108,7 +115,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 				anchorTextScanner := bufio.NewScanner(strings.NewReader(bufferAnchorText))
 				// Set the split function for the scanning operation.
-				anchorTextScanner.Split(bufio.ScanWords)
+				anchorTextScanner.Split(s.splitStrategy)
 				// Count the words.
 				anchorTextCount := 0
 				for anchorTextScanner.Scan() {

@@ -1,7 +1,9 @@
 package boilertext
 
-// BoilerText is an interface that processes incoming HTML and
+import "io"
+
+// Extractor is an interface that processes incoming HTML and
 // outputs text within HTML minus all the boilerplate
-type BoilerText interface {
-	Process(html []byte) ([]byte, error)
+type Extractor interface {
+	Process(html io.Reader) (string, error)
 }

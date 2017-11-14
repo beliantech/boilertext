@@ -1,0 +1,1009 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<meta charset="utf-8">
+
+<title>無料でウェブ魚拓のようにページを保存しながらギミックを再現できる「PageDash」でブラウザゲームをまるごと自分用に保存してみた - GIGAZINE</title>
+<link rel="amphtml" href="https://gigazine.net/amp/20171114-pagedash" />
+<meta property="og:site_name" content="GIGAZINE" />
+<meta property="og:title" content="無料でウェブ魚拓のようにページを保存しながらギミックを再現できる「PageDash」でブラウザゲームをまるごと自分用に保存してみた" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gigazine.net/news/20171114-pagedash/" />
+<meta property="fb:pages" content="514043575350122" />
+<meta property="og:image" content="http://i.gzn.jp/img/2017/11/14/pagedash/00.png" />
+<meta property="og:description" content="日々多くの情報が飛び交うネットの世界では、翌日にはページが消滅してしまうこともあれば、エイプリルフール企画などの期間限定コンテンツや地図検索の結果など、同じURLでページを開いても再現できないウェ" />
+<meta property="twitter:account_id" content="9334242" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gigazine">
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="GIGAZINE RSS Feed" href="http://gigazine.net/news/rss_2.0/">
+<link rel="apple-touch-icon" href="http://gigazine.net/apple-touch-icon.png">
+<meta name="viewport" content="initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="https://i.gzn.jp/css/common_v4.css">
+<link rel="stylesheet" type="text/css" href="https://i.gzn.jp/css/common_ad.css">
+<!-- a_lib_css -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://i.gzn.jp/js/lazysizes.min.js" async=""></script>
+
+<script type="text/javascript">
+var microadCompass = microadCompass || {};
+microadCompass.queue = microadCompass.queue || [];
+</script>
+<script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async></script>
+
+<!-- a_lib_js -->
+
+
+
+
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+<script>
+
+
+
+googletag.cmd.push(function() { googletag.defineSlot('/4330625/Google_TC_SP', [[300, 250], [320, 180], [320, 100]], 'div-gpt-ad-1484890737656-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.pubads().collapseEmptyDivs(true); googletag.enableServices(); });
+googletag=window.googletag||{cmd:[]},googletag.cmd.push(function(){var e=googletag.sizeMapping().addSize([768,500],[728,90]).addSize([0,0],[[320,100],[320,50]]).build();googletag.defineSlot("/4330625/Google_TC",[[1, 1],[728,90],[320,100],[320,50]], "Google_TC").defineSizeMapping(e).addService(googletag.pubads()),googletag.enableServices()});
+googletag=window.googletag||{cmd:[]},googletag.cmd.push(function(){var e=googletag.sizeMapping().addSize([1230,500],[300,250]).addSize([979,500],[1,1]).addSize([320,500],[300,250]).build();googletag.defineSlot("/4330625/Google_RT",[[1,1],[300,250]],"Google_RT").defineSizeMapping(e).addService(googletag.pubads()),googletag.enableServices()});
+googletag.cmd.push(function() { googletag.defineSlot('/4330625/Google_RB', [300, 600], 'div-gpt-ad-1497835101209-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.pubads().collapseEmptyDivs(true); googletag.enableServices();});
+googletag.cmd.push(function() { googletag.defineSlot('/4330625/Google_nativead_top_desktop', [300, 250], 'div-gpt-ad-1489570340413-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.pubads().collapseEmptyDivs(true); googletag.enableServices(); });
+
+
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-134978-3', 'gigazine.net');
+  ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+<!-- a_lib_google -->
+
+<style>/* 更新：20170620 */
+  #rl-list{z-index:10000; padding-left:5px; display:-webkit-box; display:-ms-flexbox; display:flex; -webkit-box-orient:horizontal; -webkit-box-direction:normal; -ms-flex-direction:row; flex-direction:row; -ms-flex-wrap:wrap; flex-wrap:wrap; justify-content:space-between;}
+  .rl-list-item {margin-top:.1rem; margin-bottom:.5rem; width:24%; list-style:none; background:#ffdd00;}
+  .rl-list-item-image img{box-sizing:border-box; max-width:100%;}
+  .rl-list-item-link {font-weight:bold; font-size:80%;}
+  .rl-list-item-link a {padding:0 2px 0; color:#333; display:inline-block;}
+  #rlcontents-s{width:98%}
+  @media(max-width:400px) {#rl-list{flex-direction:column;}
+    .rl-list-item {margin-bottom:.1rem; width:98%; display:flex; background:#fffde3;}
+    .rl-list-item-image {width:33%;}
+    .rl-list-item-link {width:67%; padding-left:.3rem;}
+    .rl-list-item-link a {padding:2px; color:#1020d0; display:inline-block;}
+  }
+</style>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4478613964609822",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+<body>
+
+<!-- ad_flag: FALSE --><!-- gpublic_ASO -->
+
+
+
+<svg class="defs" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="logo" viewBox="0 0 200.478 58.796"><g><g id="logoid1"><path d="M47.44 13.564c-2.235-1.29-7.403-4.06-14.665-4.06-1.327 0-4.47.13-7.96 1.29-6.705 2.384-10.616 7.732-10.616 14.368 0 1.16.14 3.995 1.675 7.023 1.536 3.093 5.796 8.505 15.433 8.505 2.933 0 4.75-.45 7.472-1.353l.07-8.634H27.188l5.028-8.118h18.716l-.21 21.842c-3.073 1.224-11.313 4.38-21.23 4.38-3.422 0-17.388-.32-24.582-10.63C3.374 35.987 1 31.67 1 25.162 1 15.755 6.447 10.085 9.24 7.83 12.872 4.8 19.716 1 31.308 1c3.422 0 8.59.194 16.132 2.32v10.244z" fill="#fcc800" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid2"><path d="M58.69 13.857c-2.473 0-4.505-1.836-4.505-4.652 0-2.755 2.143-4.53 4.505-4.53 2.417 0 4.505 1.775 4.505 4.59 0 2.878-2.197 4.592-4.505 4.592zm4.395 34.1V17.714H54.24v30.243h8.845z" fill="#f39800" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid3"><path d="M91.325 44.357c0 .624.05 2.544-.48 4.416-.96 3.648-4.27 9.023-13.294 9.023-1.2 0-5.663-.192-9.55-1.776V49.3c2.304 1.824 5.712 2.976 8.64 2.976.815 0 4.27 0 5.998-2.832.816-1.296 1.01-2.88 1.01-6V41.86l-3.457 4.896c-.48.096-1.39.288-2.687.288-1.296 0-5.184-.144-8.063-3.168-1.2-1.248-2.736-3.552-2.736-7.632 0-.816.096-3.12 1.104-5.375 1.392-3.073 4.847-7.2 12.863-7.2 3.745 0 7.2.816 10.656 2.352v18.335zm-7.727-14.4c-1.535-.67-2.4-.72-3.215-.72-3.696 0-5.616 2.833-5.616 6.29 0 3.31 1.68 6.095 5.23 6.095 1.73 0 3.17-.72 3.65-.912l-.05-10.752z" fill="#eb6100" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid4"><path d="M105.575 47.957c-.072-.504-.072-.972-.108-1.44 0-.432-.036-.864-.036-1.296l-2.41 2.99c-.47.07-1.01.18-2.017.18-2.232 0-4.572-.65-5.832-2.665-.72-1.152-.755-2.376-.755-2.88 0-.612.072-2.016 1.116-3.348 1.153-1.44 3.205-2.664 7.165-2.664 1.296 0 2.304.144 2.736.18 0-.18 0-.612-.107-1.08-.648-2.556-3.204-2.448-3.852-2.448-1.44 0-2.88.216-5.615 1.404l2.7-4.573c2.16-.54 3.96-.576 4.788-.576.648 0 4.032-.107 6.048 1.98.83.83 1.117 1.62 1.225 2.053.324 1.008.324 2.052.324 2.376v9.575c0 .864 0 1.404.107 2.232h-5.472zm-.144-7.668c-.323-.037-.863-.11-1.69-.11-1.08 0-2.52.11-3.313 1.117-.432.54-.468 1.116-.468 1.368 0 1.008.647 2.16 2.807 2.16 1.008 0 1.764-.252 2.664-.612V40.29z" fill="#e60012" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid5"><path d="M114.103 47.957v-4.86l13.068-15.48h-12.095V22.54h20.448v5.005L122.527 42.88h14.616l-2.952 5.077z" fill="#a9005b" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid6"><path d="M144.696 13.857c-2.473 0-4.505-1.836-4.505-4.652 0-2.755 2.144-4.53 4.506-4.53 2.417 0 4.505 1.775 4.505 4.59 0 2.878-2.197 4.592-4.504 4.592zm4.394 34.1V17.714h-8.845v30.243h8.845z" fill="#460292" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid7"><path d="M172.738 47.957l-13.932-15.444v15.444h-6.48V22.54h5.832l12.42 13.79V22.54h6.444v25.417z" fill="#091aac" stroke="#0B0008" stroke-width="1.5"/></g><g id="logoid8"><path d="M180.36 47.957V22.54h16.487v5.005h-9.864v4.896h8.46v4.933h-8.46v5.544h11.772l-2.88 5.04z" fill="#0d26f9" stroke="#0B0008" stroke-width="1.5"/></g></g></symbol>
+<symbol id="icon-tw" viewBox="0 0 1024 1024"><path d="M1024 226.4c-37.6 16.8-78.2 28-120.6 33 43.4-26 76.6-67.2 92.4-116.2-40.6 24-85.6 41.6-133.4 51-38.4-40.8-93-66.2-153.4-66.2-116 0-210 94-210 210 0 16.4 1.8 32.4 5.4 47.8-174.6-8.8-329.4-92.4-433-219.6-18 31-28.4 67.2-28.4 105.6 0 72.8 37 137.2 93.4 174.8-34.4-1-66.8-10.6-95.2-26.2 0 0.8 0 1.8 0 2.6 0 101.8 72.4 186.8 168.6 206-17.6 4.8-36.2 7.4-55.4 7.4-13.6 0-26.6-1.4-39.6-3.8 26.8 83.4 104.4 144.2 196.2 146-72 56.4-162.4 90-261 90-17 0-33.6-1-50.2-3 93.2 59.8 203.6 94.4 322.2 94.4 386.4 0 597.8-320.2 597.8-597.8 0-9.2-0.2-18.2-0.6-27.2 41-29.4 76.6-66.4 104.8-108.6z"></path></symbol><symbol id="icon-facebook" viewBox="0 0 1024 1024"><path d="M608 192h160v-192h-160c-123.514 0-224 100.486-224 224v96h-128v192h128v512h192v-512h160l32-192h-192v-96c0-17.346 14.654-32 32-32z"></path></symbol><symbol id="icon-google-plus" viewBox="0 0 1024 1024"><path d="M325.8 457.4v111.8h184.8c-7.4 48-55.8 140.6-184.8 140.6-111.2 0-202-92.2-202-205.8s90.8-205.8 202-205.8c63.4 0 105.6 27 129.8 50.2l88.4-85.2c-56.8-53-130.4-85.2-218.2-85.2-180.2 0.2-325.8 145.8-325.8 326s145.6 325.8 325.8 325.8c188 0 312.8-132.2 312.8-318.4 0-21.4-2.4-37.8-5.2-54h-307.6z"></path><path class="path2" d="M1024 448h-96v-96h-96v96h-96v96h96v96h96v-96h96z"></path></symbol><symbol id="icon-yt" viewBox="0 0 1024 1024"><path d="M1013.8 307.2c0 0-10-70.6-40.8-101.6-39-40.8-82.6-41-102.6-43.4-143.2-10.4-358.2-10.4-358.2-10.4h-0.4c0 0-215 0-358.2 10.4-20 2.4-63.6 2.6-102.6 43.4-30.8 31-40.6 101.6-40.6 101.6s-10.2 82.8-10.2 165.8v77.6c0 82.8 10.2 165.8 10.2 165.8s10 70.6 40.6 101.6c39 40.8 90.2 39.4 113 43.8 82 7.8 348.2 10.2 348.2 10.2s215.2-0.4 358.4-10.6c20-2.4 63.6-2.6 102.6-43.4 30.8-31 40.8-101.6 40.8-101.6s10.2-82.8 10.2-165.8v-77.6c-0.2-82.8-10.4-165.8-10.4-165.8zM406.2 644.8v-287.8l276.6 144.4-276.6 143.4z"></path></symbol><symbol id="icon-rss" viewBox="0 0 1024 1024"><path d="M136.294 750.93c-75.196 0-136.292 61.334-136.292 136.076 0 75.154 61.1 135.802 136.292 135.802 75.466 0 136.494-60.648 136.494-135.802-0.002-74.742-61.024-136.076-136.494-136.076zM0.156 347.93v196.258c127.784 0 247.958 49.972 338.458 140.512 90.384 90.318 140.282 211.036 140.282 339.3h197.122c-0.002-372.82-303.282-676.070-675.862-676.070zM0.388 0v196.356c455.782 0 826.756 371.334 826.756 827.644h196.856c0-564.47-459.254-1024-1023.612-1024z"></path></symbol><symbol id="icon-user" viewBox="0 0 1024 1024"><path d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z"></path></symbol>
+<symbol id="icon-search" viewBox="0 0 1024 1024"><path d="M992.262 871.396l-242.552-206.294c-25.074-22.566-51.89-32.926-73.552-31.926 57.256-67.068 91.842-154.078 91.842-249.176 0-212.078-171.922-384-384-384-212.076 0-384 171.922-384 384s171.922 384 384 384c95.098 0 182.108-34.586 249.176-91.844-1 21.662 9.36 48.478 31.926 73.552l206.294 242.552c35.322 39.246 93.022 42.554 128.22 7.356s31.892-92.898-7.354-128.22zM384 640c-141.384 0-256-114.616-256-256s114.616-256 256-256 256 114.616 256 256-114.614 256-256 256z"></path></symbol>
+<symbol id="icon-ftid1" viewBox="0 0 24 24"><path d="M18.165 24h-15c-.276 0-.5-.224-.5-.5V5.063c0-.12.044-.238.124-.33l4-4.563c.09-.11.23-.17.37-.17h11c.275 0 .5.224.5.5V7h-1V1H7.392L3.665 5.25V23h14v-7h1v7.5c0 .276-.225.5-.5.5z"/><path d="M7.165 6h-3.5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3V1c0-.276.224-.5.5-.5s.5.224.5.5v4.5c0 .276-.224.5-.5.5zm2.5 3h-4c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h4c.276 0 .5.224.5.5s-.224.5-.5.5z"/><path d="M7.665 8h4v1h-4zm2 4h-4c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h4c.276 0 .5.224.5.5s-.224.5-.5.5z"/><path d="M7.665 11h4v1h-4zm5 4h-7c-.276 0-.5-.224-.5-.5 0-.275.224-.5.5-.5h7c.276 0 .5.225.5.5 0 .276-.224.5-.5.5zm8.11 8.478c-.2 0-.39-.12-.464-.317l-2.97-7.602c-.102-.258.026-.547.284-.648.26-.1.548.026.647.282l2.975 7.607c.102.255-.025.545-.283.646-.06.023-.12.034-.18.034z"/><path d="M16.07 16.2c-2.184 0-4.108-1.315-4.903-3.35-.512-1.31-.483-2.74.08-4.03s1.597-2.278 2.907-2.79c.615-.24 1.26-.362 1.916-.362 2.184 0 4.108 1.313 4.903 3.348 1.057 2.704-.285 5.763-2.988 6.82-.614.24-1.257.363-1.915.363zm0-9.532c-.53 0-1.053.1-1.553.294-1.06.414-1.896 1.217-2.354 2.26-.457 1.044-.48 2.203-.065 3.263.644 1.647 2.204 2.713 3.972 2.713.53 0 1.053-.1 1.552-.294 2.19-.855 3.274-3.334 2.42-5.524-.645-1.648-2.202-2.712-3.972-2.712z"/><path d="M18.165 13h-4c-.276 0-.5-.224-.5-.5v-3c0-.276.224-.5.5-.5h4c.275 0 .5.224.5.5v3c0 .276-.225.5-.5.5zm-3.5-1h3v-2h-3v2z"/></symbol><symbol id="icon-ftid2" viewBox="0 0 24 24"><path d="M19.458 15.125c-.08 0-.162-.02-.237-.06-.24-.132-.33-.438-.2-.68l2.37-4.388-2.37-4.388c-.13-.245-.04-.55.2-.68.247-.134.55-.04.68.202l2.5 4.625c.08.145.08.325 0 .474l-2.5 4.626c-.09.17-.263.265-.44.265z"/><path d="M8.04 18c-.275 0-.5-.225-.5-.5v-2c0-3.31 2.692-6 6-6h8c.276 0 .5.225.5.5s-.224.5-.5.5h-8c-2.756 0-5 2.243-5 5v2c0 .275-.223.5-.5.5z"/><path d="M18.04 20.5h-16c-.275 0-.5-.225-.5-.5V4c0-.275.225-.5.5-.5h15.5c.276 0 .5.225.5.5s-.224.5-.5.5h-15v15h15v-3c0-.275.226-.5.5-.5s.5.225.5.5V20c0 .275-.224.5-.5.5z"/></symbol><symbol id="icon-ftid3" viewBox="0 0 24 24"><path d="M18.5 24h-17c-.276 0-.5-.225-.5-.5v-19c0-.276.224-.5.5-.5h17c.275 0 .5.224.5.5v19c0 .275-.225.5-.5.5zM2 23h16V5H2v18zm19.5 0c-.215 0-.406-.138-.475-.342l-1-3c-.016-.05-.025-.104-.025-.158v-16c0-.276.225-.5.5-.5h2c.275 0 .5.224.5.5v16c0 .054-.01.107-.025.158l-1 3c-.07.204-.26.342-.475.342zm-.5-3.58l.5 1.5.5-1.5V4h-1v15.42z"/><path d="M22 7h-1c-.275 0-.5-.224-.5-.5s.225-.5.5-.5h1c.275 0 .5.224.5.5s-.225.5-.5.5zm0 12h-1c-.275 0-.5-.225-.5-.5s.225-.5.5-.5h1c.275 0 .5.225.5.5s-.225.5-.5.5zM14.5 4.5c-.275 0-.5-.224-.5-.5V3h-1.5c-.276 0-.5-.224-.5-.5 0-.827-.673-1.5-1.5-1.5h-1C8.673 1 8 1.673 8 2.5c0 .276-.224.5-.5.5H6v1c0 .276-.224.5-.5.5S5 4.276 5 4V2.5c0-.276.224-.5.5-.5h1.55C7.282.86 8.292 0 9.5 0h1c1.208 0 2.217.86 2.45 2h1.55c.277 0 .5.224.5.5V4c0 .276-.225.5-.5.5zm2 17.5h-13c-.276 0-.5-.225-.5-.5v-15c0-.276.224-.5.5-.5h13c.275 0 .5.224.5.5v15c0 .275-.225.5-.5.5zM4 21h12V7H4v14z"/><path d="M13 10H7c-.276 0-.5-.224-.5-.5S6.724 9 7 9h6c.275 0 .5.224.5.5s-.225.5-.5.5zm0 3H7c-.276 0-.5-.225-.5-.5 0-.276.224-.5.5-.5h6c.275 0 .5.224.5.5 0 .275-.225.5-.5.5zm0 3H7c-.276 0-.5-.225-.5-.5s.224-.5.5-.5h6c.275 0 .5.225.5.5s-.225.5-.5.5z"/></symbol><symbol id="icon-ftid4" viewBox="0 0 24 24"><path d="M9.424 15.813h-5c-.275 0-.5-.224-.5-.5v-8c0-.276.225-.5.5-.5h5c.276 0 .5.224.5.5v8c0 .277-.224.5-.5.5zm-4.5-1h4v-7h-4v7z"/><path d="M15.424 20.813c-.115 0-.23-.04-.32-.116l-6-5c-.113-.095-.18-.233-.18-.384V7.165c0-.14.06-.272.163-.367l6-5.48c.146-.133.357-.17.54-.087.18.08.297.26.297.46v18.63c0 .2-.11.37-.288.46-.067.03-.14.05-.212.05zm-5.5-5.734l5 4.16V2.82l-5 4.565v7.694zm-3 .73h-2.45c-2.438 0-4.425-2.02-4.425-4.5s1.98-4.5 4.42-4.5h2.45c.27 0 .5.22.5.5s-.23.5-.5.5H4.47c-1.855 0-3.425 1.6-3.425 3.5s1.568 3.5 3.425 3.5h2.45c.276 0 .5.22.5.5s-.224.5-.5.5zm11.48-2.92c-.277 0-.5-.23-.5-.5 0-.28.223-.5.5-.5.52 0 .924-.4.924-.9s-.406-.89-.925-.89c-.276 0-.5-.23-.5-.5s.224-.5.5-.5c1.08 0 1.925.83 1.925 1.89s-.846 1.89-1.925 1.89z"/><path d="M18.404 14.642c-.276 0-.5-.225-.5-.5 0-.276.224-.5.5-.5 1.522 0 2.717-1.16 2.717-2.644 0-1.48-1.19-2.642-2.71-2.642-.27 0-.5-.224-.5-.5s.23-.5.5-.5c2.09 0 3.72 1.6 3.72 3.642 0 2.044-1.63 3.644-3.71 3.644z"/><path d="M18.37 16.465c-.277 0-.5-.226-.5-.5 0-.276.223-.5.5-.5 2.568 0 4.58-1.96 4.58-4.467 0-2.504-2.012-4.465-4.58-4.465-.277 0-.5-.224-.5-.5 0-.274.223-.5.5-.5 3.13 0 5.58 2.4 5.58 5.465 0 3.066-2.45 5.467-5.58 5.467zm-7.926 6.348h-3.02c-.224 0-.42-.148-.48-.362l-2-7c-.044-.14-.014-.31.08-.43.096-.12.243-.2.4-.2h3c.223 0 .418.15.48.37l1.963 6.876c.048.078.076.17.076.266 0 .275-.223.498-.5.498zm-2.643-1h1.96l-1.71-6H6.09l1.713 6z"/></symbol><symbol id="icon-ftid5" viewBox="0 0 24 24"><path d="M19.47 15.985h-15c-.274 0-.5-.225-.5-.5s.226-.5.5-.5h15c.276 0 .5.225.5.5s-.224.5-.5.5zm-1.5-5h-12c-.274 0-.5-.224-.5-.5s.226-.5.5-.5h12c.276 0 .5.224.5.5s-.224.5-.5.5zm-.062 10H5.97c-.274 0-.5-.225-.5-.5s.226-.5.5-.5h11.94c.275 0 .5.225.5.5s-.225.5-.502.5z"/><path d="M12 24.007c-.15 0-.297-.066-.396-.194-.17-.22-.13-.533.09-.7 2.662-2.057 4.172-5.145 4.037-8.266-.12-2.84-1.58-5.362-4-6.92-.23-.148-.3-.457-.15-.69.15-.232.46-.3.69-.15 2.7 1.736 4.327 4.55 4.46 7.717.15 3.445-1.503 6.847-4.422 9.1-.09.068-.198.103-.305.103z"/><path d="M12 24.007c-.107 0-.215-.035-.307-.104-2.918-2.252-4.572-5.653-4.426-9.1.137-3.167 1.764-5.98 4.46-7.716.23-.15.54-.083.69.15.148.232.082.542-.15.69-2.42 1.56-3.88 4.08-4 6.92-.135 3.12 1.374 6.21 4.036 8.265.22.168.26.48.09.7-.096.128-.243.195-.393.195z"/><path d="M12 24.015c-4.688 0-8.5-3.813-8.5-8.5 0-4.688 3.813-8.5 8.5-8.5 4.687 0 8.5 3.813 8.5 8.5 0 4.686-3.813 8.5-8.5 8.5zm0-16c-4.137 0-7.5 3.363-7.5 7.5 0 4.135 3.363 7.5 7.5 7.5 4.136 0 7.5-3.365 7.5-7.5 0-4.137-3.364-7.5-7.5-7.5z"/><path d="M12.97 12.485c-.274 0-.5-.224-.5-.5v-7c0-.276.226-.5.5-.5s.5.224.5.5v7c0 .276-.224.5-.5.5z"/><path d="M12.994 4.985c-1.38 0-2.5-1.122-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.122 2.5 2.5-1.12 2.5-2.5 2.5zm0-4c-.828 0-1.5.673-1.5 1.5s.672 1.5 1.5 1.5c.826 0 1.5-.673 1.5-1.5s-.672-1.5-1.5-1.5z"/></symbol><symbol id="icon-ftid6" viewBox="0 0 24 24"><path d="M27 23.875c-.275 0-.5-.225-.5-.5v-1c0-2.493-3.682-3.422-6-3.422-.156 0-.303-.072-.397-.195l-2.25-2.922c-.168-.22-.127-.53.092-.7.22-.168.533-.13.7.09l2.103 2.73c2.805.067 6.752 1.27 6.752 4.42v1c0 .274-.225.5-.5.5zm-19.625-7c-2.965 0-5.38-3.22-5.607-6.068C1.1 10.62.5 10.07.5 9.375v-2c0-.625.605-1.076 1-1.304V4.38C1.5 2.48 3.015.93 4.897.878 5.3.715 6.883.125 8.5.125c2.58 0 4 1.51 4 4.25V5.92c1 .194 1 .997 1 1.455v2c0 .696-.316 1.215-.826 1.412-.19 2.955-2.394 6.088-5.3 6.088zM8.5 1.125c-1.622 0-3.287.702-3.303.71-.063.026-.13.04-.197.04-1.378 0-2.5 1.12-2.5 2.5v2c0 .196-.116.375-.295.456-.356.17-.686.44-.706.55v2c0 .22.42.5.75.5.27 0 .5.23.5.5 0 2.48 2.13 5.5 4.62 5.5 2.43 0 4.31-2.95 4.31-5.5 0-.27.22-.5.5-.5.21 0 .31-.16.31-.5v-2c0-.5 0-.5-.5-.5-.28 0-.5-.22-.5-.5v-2c0-2.18-.98-3.25-3-3.25z"/><path d="M17.5 15.785c-1.277 0-2.38-.258-3.378-.537-.267-.074-.42-.35-.347-.616.074-.266.352-.423.615-.347.932.26 1.95.5 3.108.5 4.887 0 6.813-2.393 7.425-3.442-.447-.76-1.68-2.896-1.91-3.875-.397-1.686-1.73-5.604-5.515-5.604-.752 0-1.468.17-2.13.505-.248.12-.546.02-.67-.23-.126-.25-.027-.55.22-.67.804-.41 1.67-.61 2.58-.61 3.167 0 5.53 2.32 6.487 6.37.195.83 1.47 3.05 1.94 3.83.09.145.097.33.02.48-1.322 2.65-4.48 4.23-8.445 4.23zM-3 23.875c-.276 0-.5-.225-.5-.5v-1c0-2.896 2.313-5 5.5-5h1.233l1.33-1.986c.155-.23.465-.3.695-.14.23.15.29.46.137.69l-1.48 2.2c-.092.14-.248.22-.415.22H2c-2.65 0-4.5 1.646-4.5 4v1c0 .275-.224.5-.5.5zm21 0c-.275 0-.5-.225-.5-.5v-1c0-2.355-1.816-4-4.418-4h-1.5c-.165 0-.32-.08-.412-.217l-1.623-2.36c-.156-.228-.1-.54.13-.694.227-.154.538-.1.694.13l1.48 2.145h1.24c3.19 0 5.42 2.05 5.42 5v1c0 .27-.22.49-.5.49z"/><path d="M5.5 22.875c-.03 0-.06-.003-.09-.01-.163-.028-.3-.137-.367-.287l-2-4.5c-.09-.2-.037-.438.13-.58.166-.147.407-.162.592-.047l4 2.5c.13.09.214.22.23.37.02.15-.034.31-.142.41l-2 2c-.094.1-.222.15-.353.15zm-.88-3.71l1.042 2.342 1.04-1.04-2.08-1.302z"/><path d="M9.5 22.875c-.132 0-.26-.052-.355-.146l-2-2c-.108-.11-.16-.26-.143-.41.017-.15.103-.29.23-.37l4-2.5c.187-.12.427-.1.594.04.166.142.218.38.13.58l-2 4.5c-.068.15-.205.26-.367.29H9.5zm-1.203-2.41l1.04 1.042 1.042-2.342-2.09 1.3z"/></symbol>
+</defs></svg>
+
+
+
+
+
+<header id="header">
+<div class="logo"><a href="/"><svg><title>GIGAZINE ホーム</title><use xlink:href="#logo"></use></svg></a></div>
+
+
+
+
+
+
+<div class="social-button">
+<a class="fl-tw" href="https://twitter.com/gigazine" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/twitter.com/gigazine');" rel="nofollow" target="_blank"><svg><title>Twitter</title><use xlink:href="#icon-tw"></use></svg></a>
+<a class="fl-fb" href="https://www.facebook.com/GIGAZINE" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/www.facebook.com/gigazine');" rel="nofollow" target="_blank"><svg><title>Facebook</title><use xlink:href="#icon-facebook"></use></svg></a>
+<a class="fl-gp" href="https://plus.google.com/+gigazine/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/plus.google.com/+gigazine/');" rel="nofollow" target="_blank"><svg><title>Google+</title><use xlink:href="#icon-google-plus"></use></svg></a>
+
+<a href="#" id="push_off"><img src="https://i.gzn.jp/img/gsc/push_button_off.png"></a>
+<a href="#" id="push_on"><img src="https://i.gzn.jp/img/gsc/push_button.png"></a>
+
+
+<script>function switchDisplay(){ obj=document.getElementById('gscopen').style; obj.display=(obj.display=='none')?'block':'none'; }</script>
+<a class="fl-user" onclick="switchDisplay();"><svg><title>login</title><use xlink:href="#icon-user"></use></svg></a>
+
+</div>
+</header>
+<!-- a_lib_header_no_login_ad -->
+
+
+
+<div id="gscopen" style="display:none;">
+<div class="gscopen">
+<div class="gscmenu">
+<p class="gsctitle">GIGAZINE シークレットクラブ</p>
+<div class="gscbtn"><a href="https://gigazine.net/member/login" class="btn-regist btn-green" onclick="_paq.push(['trackEvent', 'outgoing', 'click', '/outgoing/icon_login']); ga('send', 'event', 'outgoing', 'click', '/outgoing/icon_login');">ログイン</a></div>
+<p class="gscabout"><a href="https://gigazine.net/club/" onclick="_paq.push(['trackEvent', 'outgoing', 'click', '/outgoing/icon_clubindex']); ga('send', 'event', 'outgoing', 'click', '/outgoing/icon_clubindex');">GIGAZINE シークレットクラブって何？</a></p>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="main">
+<div id="article">
+
+<!-- ad_flag: FALSE --><!-- gpublic_ASO --><div class="sbn">
+
+<div id="TC">
+
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://gigazine.asia/a/www/delivery/ajs.php':'http://gigazine.asia/a/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=3");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://gigazine.asia/a/www/delivery/ck.php?n=a0aed59d&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://gigazine.asia/a/www/delivery/avw.php?zoneid=3&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a0aed59d' border='0' alt='' /></a></noscript>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- 20141031_GSC_3 -->
+<div class="cntimage"><!-- ←20140212 -->
+<time datetime="2017-11-14T08:05:00+09:00" class="yeartime">2017年11月14日 08時05分00秒</time>
+<h1 class="title">無料でウェブ魚拓のようにページを保存しながらギミックを再現できる「PageDash」でブラウザゲームをまるごと自分用に保存してみた</h1>
+<!-- google_ad_section_start -->
+  <p class="preface"></p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/00.png" target="_blank"><img src="https://i.gzn.jp/img/2017/11/14/pagedash/00_m.png" border="0" class="lzsmall"></a><p class="preface">
+<br />
+日々多くの情報が飛び交うネットの世界では、翌日にはページが消滅してしまうこともあれば、<b><a href="http://gigazine.net/news/20170401-aprilfool/" target="_blank">エイプリルフール企画</a></b>などの期間限定コンテンツや地図検索の結果など、同じURLでページを開いても再現できないウェブサイトもあります。そんなときに、見ているページをギミックごとそのまま保存できるサービスが<b>「PageDash」</b>です。PageDashを使うとページ内の画像やJavaScript、CSSなどのデータを丸ごと保存しておけるようになり、残しておきたいメモの共有や記録する場合に役立ちそうなので、実際にサービスを体験してみました。<br />
+<br />
+<b>PageDash - Your Personal Web Archive</b><br />
+<b><a href="https://www.pagedash.com/" target="_blank">https://www.pagedash.com/</a></b><br />
+<br />
+記事作成時点では、PageDashは登録すれば誰でも参加できる公開β版が提供されており、対応しているブラウザはGoogle Chromeのみ。今後はSafariやFirefox、Edgeなど他のウェブブラウザにも今後対応予定で、さらには保存したページの全文検索、共有機能、拡張ツールを含むサービスも提供される予定とのことです。<br />
+<br />
+<b>◆PageDashに登録する</b><br />
+PageDashを利用するにはメールアドレスの登録が必要です。まずは、<b><a href="https://www.pagedash.com/" target="_blank">トップページ</a></b>で「Sing Up」をクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3000.png" target="_blank"><img src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3000_m.png" border="0" class="lzsmall"></a><p class="preface">
+<br />
+「任意の名前」「メールアドレス」「任意のパスワード」をそれぞれ入力。「Sing Up」をクリック。なお、β版の段階のためか、記事作成時点では確認メールなどが届いた形跡はありませんでした。<br />
+</p><img src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3007_m.png" border="0" class="lzsmall"><p class="preface">
+<br />
+これだけで登録が完了し、自分用の「dashboard」が表示されます。中央には「Your dashboard is empty／Here's how to start saving pages!」(dashboardは空です。ページの保存の仕方はこんな感じ)と表示されます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3012.png" target="_blank"><img src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3012_m.png" border="0" class="lzsmall"></a><p class="preface">
+<br />
+なお、ページ上部右に先ほど入力した名前の頭文字(イニシャル)が1文字表示されます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3012-1.png" target="_blank"><img src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3012-1_m.png" border="0" class="lzsmall"></a><p class="preface">
+<br />
+<b>◆ウェブサイトをアーカイブするための拡張機能「PageDash Web Extension」をインストールする</b><br />
+PageDashを使うためにはChromeに拡張機能をインストールする必要があります。bashboardに表示されている「Install Chrome Extension」をクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3021.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3021_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+するとブラウザの別タブで、Chrome ウェブストアの「PageDash Web Extension」ページが開きます。<br />
+<br />
+<b>PageDash Web Extension - Chrome ウェブストア</b><br />
+<b><a href="https://chrome.google.com/webstore/detail/pagedash-web-extension/bekddmpbdpjamlppkeioloobkjlcokkh" target="_blank">https://chrome.google.com/webstore/detail/pagedash-web-extension/bekddmpbdpjamlppkeioloobkjlcokkh</a></b><br />
+<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3026.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3026_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+ページ上部右の「+CHROME に追加」をクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3027.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3027_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「アクセスしたウェブサイト上にある全データの読み取りと変更」「連携するウェブサイトとの通信」と、拡張機能の追加を確認するメッセージがポップアップされるので「拡張機能を追加」をクリック。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3032_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+拡張機能が追加されると、完了を知らせるメッセージがポップアップされるので「×」をクリックして閉じます。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3033_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+インストールが完了すると、ブラウザのアドレスバーの右に以下のようなアイコンが表示されました。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3035_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+<b>◆見ているページを保存(アーカイブ)する</b><br />
+インストールが完了したので、さっそくページをアーカイブしてみます。今回は<b><a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8" target="_blank">日本語版ウィキペディア</a></b>のトップページを保存してみました。まずは、保存したいページを開いてブラウザに表示させます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3041.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3041_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+アドレスバー右のアイコンをクリックすると、ブラウザで表示中のページのコンテンツがPageDashのサーバーへとアップロードされます。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3054_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+ページをサーバー上にアーカイブ中を示すメッセージ「Saving page assets to PageDash」が表示されます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3057.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3057_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+アーカイブが完了すると、画面にメッセージ「Successfully archived page!」が表示されました。アーカイブを確認する場合は、「View it in PageDash」をクリック。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3060_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+ブラウザの別タブで、自分のdashboardが開き、サーバーにアーカイブされたページが表示されました。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3064.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3064_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+PageDashでは、アーカイブしたページを「Static」(静的)、「Dynamic」(動的)、「Screenshot」(スクリーンショット)の3種類の方法で表示させることが可能。アーカイブ後のページ名の下にあるリンクをクリックすると表示が切り替わります。Staticは、画像・テキスト・リンク・文字のフォントなどをブラウザに表示した状態のまま、簡素にページを再現します。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3073.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3073_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「Dynamic」は、ブラウザに表示されていたページのJavaScriptやCSSのデータ、画像、文字のフォント、HTMLデータなどを、ギミックを含めて丸ごと再現します。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3074.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3074_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「Screenshot」は、その名前のとおりページを画像として保存。画像はブラウザからダウンロードすることも可能です。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3078.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3078_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+また、どの保存方法でも、保存したサイト名の右に表示されている以下のアイコンをクリックすると、ページを画面の幅いっぱいに表示することができます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3182.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3182_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+PageDashはFlashデータには非対応ですが、前述のようにページに含まれるJavaScriptやCSSなどをそのまま保存することが可能。Googleのトップページでプレイできる<b>パックマン</b>をそのまま保存することもできます。<br />
+<br />
+<b>パックマン誕生 30 周年  - Doodle ギャラリー</b><br />
+<b><a href="https://www.google.com/doodles/30th-anniversary-of-pac-man" target="_blank">https://www.google.com/doodles/30th-anniversary-of-pac-man</a></b><br />
+</p><a href="https://www.google.com/doodles/30th-anniversary-of-pac-man" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3082_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+ページを表示して、アドレスバーの右のPageDashアイコンをクリック。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3258_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+アーカイブが完了。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3083.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3083_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「View it in PageDash」をクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3084.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3084_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+アーカイブのページ名をクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3087.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3087_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+Dynamicをクリックし、ゲームをスタートする「Insert Coin」をクリックすると……<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3090.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3090_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「READY!」と表示されてゲームをプレイできました。このように、PageDashではこれまで難しかったJavaScriptやCSSなどのコンテンツをアーカイブし、ギミックを再現することが可能です。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3098_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+なお、アーカイブされるのはブラウザに保存されるデータなので、サーバーから返ってくる情報を使うギミックは保存できません。例えば以下のようなGoogleの検索フォームはアーカイブできても、サジェスト機能などは再現できません。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3253.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3253_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+<b>◆アーカイブしているページを削除して、使用できる容量を増やす</b><br />
+PageDashで利用できるアーカイブ容量には上限があり、記事作成時点のβ版では1ヶ月に30MBまでを利用可能。残り容量を確認するには、dashboardでイニシャルが表示されいるアイコンをクリックすると以下のような確認画面が表示されます。なお、メッセージ下部には「Resets in 17 days」と書いてあり、17日後には使用容量のカウントがリセットされて、30MB分のページを新たに保存できることを示しています。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3186_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+アーカイブのページ名に、カーソルを合わせると、ゴミ箱の形をしたアイコンが表示されるのでクリック。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3193.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3193_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+「DELETE PAGE」と確認のメッセージが表示されるので、「Delete」をクリック。アーカイブが削除されます。<br />
+</p><a href="https://i.gzn.jp/img/2017/11/14/pagedash/snap3199.png" target="_blank"><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3199_m.png" border="0" class="lazyload"></a><p class="preface">
+<br />
+削除すると、残り容量は3.8MBへと1.7MB増加し、使用率は18％から12％へと6ポイント減少しました。なお、アーカイブされているデータ毎の容量を確かめる方法は確認できませんでした。また、有料版ではデータ容量を増やすことが可能なる<b><a href="https://app.pagedash.com/upgrade" target="_blank">予定</a></b>ですが、β版からのデータ移行や事前の無料体験はできないようになっています。<br />
+</p><img data-src="https://i.gzn.jp/img/2017/11/14/pagedash/snap3205_m.png" border="0" class="lazyload"><p class="preface">
+<br />
+記事を作成した2017年11月14日現在、PageDashに対応しているウェブブラウザはGoogle Chromeのみで、他のブラウザやスマートフォンなどの環境では利用できませんでしたが、今後対応が予定されています。同様のサービスとしては<b><a href="https://evernote.com/" target="_blank">Evernote</a></b>などが挙げられますが、PageDashにはページに含まれるJavaScriptやCSSのギミックをそのまま再現して保存できるという独自性があり、クリック一つで簡単にアーカイブできるというメリットがありました。</p>
+<!-- google_ad_section_end -->
+</div><!-- ←20140212 -->
+
+
+
+<!-- gpublic_ASO -->
+
+
+<style>
+#G_EF{width:300px; background:transparent; margin: 20px auto 0; padding: 0; display: block;} .EF_Left {display:block; width:300px; height:260px; margin:0; padding:0; background: transparent;}
+@media all and (min-width: 768px) { #G_EF {width:100%; height:290px; background:transparent; margin: 20px 0 0 0; padding: 0; display:block;} .EF_Left {display:block; width:300px; height:auto; margin:0 15px 0 5px; padding:0; background: transparent; float:left;} #G_EF:after {content:".";display:block;visibility:hidden;height:0.1px;font-size:0.1em;line-height:0;clear:both;} }
+</style>
+<div id="G_EF">
+<div class="EF_Left">
+
+
+
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://gigazine.asia/a/www/delivery/ajs.php':'http://gigazine.asia/a/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=11");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://gigazine.asia/a/www/delivery/ck.php?n=a7b3fc9d&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://gigazine.asia/a/www/delivery/avw.php?zoneid=11&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a7b3fc9d' border='0' alt='' /></a></noscript>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+<p class="article"><b>・関連記事</b><br />
+<b><a href="https://gigazine.net/news/20151230-ballloon-for-chrome/" target="_blank">ウェブサイトの画像をワンクリックでクラウドストレージに保存できる「Ballloon for Chrome」 - GIGAZINE</a></b><br />
+<br />
+<b><a href="https://gigazine.net/news/20121026-textarea-cache/" target="_blank">フォーム入力中に誤って消えてしまった文字を復活させるFirefox用アドオン「Textarea Cache」 - GIGAZINE</a></b><br />
+<br />
+<b><a href="https://gigazine.net/news/20160121-trello-power-ups/" target="_blank">カード感覚でタスク整理できる「Trello」が進化してカレンダー上での整理にも対応したので使ってみた - GIGAZINE</a></b><br />
+<br />
+<b><a href="https://gigazine.net/news/20130830-copy-fifteen-gb-free/" target="_blank">無料で15GBがWindows・iPhone・Android・Mac・Linuxから使い放題のオンラインストレージ「Copy」で容量をさらにタダで増やす方法 - GIGAZINE</a></b><br />
+<br />
+<b><a href="https://gigazine.net/news/20150412-notello/" target="_blank">机の上で紙にメモするかのようにブラウザ上でメモが取れるスタイリッシュなデザインの「Notello」 - GIGAZINE</a></b><br />
+<br />
+<b><a href="https://gigazine.net/news/20150309-taskulu/" target="_blank">無料でも利用可能、タスクをカード型の「カンバン」で管理する「Taskulu」 - GIGAZINE</a></b></p>
+
+<!-- gpublic_ASO -->
+
+
+
+<div class="rlcontents-s">
+<p class="preface"><b>・関連コンテンツ</b></p>
+<ul id="rl-list">  <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20150619-chrome-web-cache/"><img data-src="https://i.gzn.jp/img/2015/06/19/chrome-web-cache/00-top_m.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20150619-chrome-web-cache/">404エラーで消えてしまったページを各種キャッシュサービスから掘り起こすChrome拡張「Web Cache」</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20120627-firefox-android/"><img data-src="https://i.gzn.jp/img/2012/06/27/firefox-android/top_m.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20120627-firefox-android/">レンダリング速度を3倍＆起動も高速化、全面的に再設計したAndroid用Firefox14正式版リリース</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20060614_csshtml_rendr/"><img data-src="https://i.gzn.jp/img/2006/06/14/rendr/rendr.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20060614_csshtml_rendr/">CSSとHTMLをリアルタイムに書き換えてプレビューできる「rendr」</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20150616-chrome-bookmark-manage/"><img data-src="https://i.gzn.jp/img/2015/06/16/chrome-bookmark-manage/top_m.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20150616-chrome-bookmark-manage/">Chromeの「ブックマーク マネージャ」がタイル表示からシンプルに戻る</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20140324-pushbullet-ios/"><img data-src="https://i.gzn.jp/img/2014/03/24/pushbullet-ios/00_m.jpg" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20140324-pushbullet-ios/">スマホとPC間でデータやリンクを簡単にやり取りできる「Pushbullet」のiOS版が登場</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20150309-taskulu/"><img data-src="https://i.gzn.jp/img/2015/03/09/taskulu/00-top_m.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20150309-taskulu/">無料でも利用可能、タスクをカード型の「カンバン」で管理する「Taskulu」</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20130813-kraken-io/"><img data-src="https://i.gzn.jp/img/2013/08/13/kraken-io/top_m.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20130813-kraken-io/">無料で画像のファイルサイズを減らして軽量化してくれる「Kraken.io」</a>
+    </div>
+  </li>
+    <li class="rl-list-item">
+    <div class="rl-list-item-image">
+      <a href="/news/20120425-gmail-storage-10gb/"><img data-src="https://i.gzn.jp/img/2012/04/25/gmail-storage-10gb/gmail.png" class="lazyload"></a>
+    </div>
+    <div class="rl-list-item-link">
+      <a href="/news/20120425-gmail-storage-10gb/">Gmailの無料ストレージ容量が10GBへ拡大</a>
+    </div>
+  </li>
+  </ul>
+</div>
+    
+
+
+
+
+
+<nav><ul id="next-prev"><li><p>&lt;&lt; 次の記事</p><div><a href="http://gigazine.net/news/20171114-visual-intelligence/"><img data-src="https://i.gzn.jp/img/2017/11/14/visual-intelligence/00.jpg" class="lazyload"></a></div><p class="np-bg"><a href="http://gigazine.net/news/20171114-visual-intelligence/">視覚的な認識能力はIQとは一致しない</a></p></li><li><p>前の記事 &gt;&gt;</p><div><a href="http://gigazine.net/news/20171114-sex-trigger-cardiac-arrest/"><img data-src="https://i.gzn.jp/img/2017/11/14/sex-trigger-cardiac-arrest/00.jpg" class="lazyload"></a></div><p class="np-bg"><a href="http://gigazine.net/news/20171114-sex-trigger-cardiac-arrest/">セックス中の「腹上死」は現実、行為中に心停止を起こすケースが一定の割合で存在することが明らかに</a></p></li></ul></nav>
+<style>
+#next-prev{display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-pack: distribute;
+justify-content: space-around;-webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;
+padding:0}
+#next-prev li{width:49%;max-width:402px;list-style: none;}
+#next-prev p{margin:.2rem 0;font-weight:bold;font-size:.875em}
+#next-prev img{max-width:100%;border:1px solid #333;vertical-align: text-top;box-sizing: border-box;}
+#next-prev .np-bg{background-color:#fd0;margin-top:0;padding:4px;max-width:402px;box-sizing: border-box;}
+</style>
+
+
+
+
+
+
+<dl class="followbeta">
+<dd class="tw"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="ja">Tweet</a><a class="arrow_box" href="https://twitter.com/search?ref_src=twsrc%5Etfw&amp;q=http%3A%2F%2Fgigazine.net%2Fnews%2F20171114-pagedash%2F" target="_blank" rel="nofollow">214</a></dd>
+<dd class="fb"><div class="fb-share-button" data-href="http://gigazine.net/news/20171114-pagedash/" data-layout="box_count"></div></dd>
+<dd class="gl"><div class="g-plusone" data-size="tall" data-action="share" data-annotation="bubble"></div></dd>
+<dd class="pk"><a data-pocket-label="pocket" data-pocket-count="vertical" class="pocket-btn" data-lang="en"></a></dd>
+</dl>
+
+
+
+<div class="items">
+<p><time datetime="2017-11-14T08:05:00+09:00">2017年11月14日 08時05分00秒</time> in <a href="http://gigazine.net/news/C12/">レビュー</a>, &nbsp;<a href="http://gigazine.net/news/C5/">ネットサービス</a>, &nbsp;<a href="http://gigazine.net/news/C37/">ウェブアプリ</a>,  Posted by log1f_yi</p>
+<div class="social-button">
+<a class="fl-tw" href="https://twitter.com/gigazine" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/twitter.com/gigazine');" rel="nofollow" target="_blank"><svg><title>Twitter</title><use xlink:href="#icon-tw"></use></svg></a>
+<a class="fl-fb" href="https://www.facebook.com/GIGAZINE" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/www.facebook.com/gigazine');" rel="nofollow" target="_blank"><svg><title>Facebook</title><use xlink:href="#icon-facebook"></use></svg></a>
+<a class="fl-gp" href="https://plus.google.com/+gigazine/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/plus.google.com/+gigazine/');" rel="nofollow" target="_blank"><svg><title>Google+</title><use xlink:href="#icon-google-plus"></use></svg></a>
+<a class="fl-yt" href="https://www.youtube.com/user/gigazine" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/www.youtube.com/gigazine');" rel="nofollow" target="_blank"><svg><title>YouTube</title><use xlink:href="#icon-yt"></use></svg></a>
+<a class="fl-rs" href="http://gigazine.net/news/rss_2.0/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.net/rss_2.0');" target="_blank"><svg><title>RSS 2.0</title><use xlink:href="#icon-rss"></use></svg></a>
+</div>
+</div><!-- end_.items -->
+
+</div><!-- end_#article -->
+
+<aside id="latest">
+
+<div class="e_ad">
+<div class="card">
+<div class="thumb">
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://gigazine.asia/a/www/delivery/ajs.php':'http://gigazine.asia/a/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=418");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://gigazine.asia/a/www/delivery/ck.php?n=afb675f7&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://gigazine.asia/a/www/delivery/avw.php?zoneid=418&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=afb675f7' border='0' alt='' /></a></noscript>
+
+</div>
+
+<h2><a href="https://gigazine.net/news/20171109-dydo-interview-coffee-development/" onclick="_paq.push(['trackEvent', 'outgoing', 'click', '/outgoing/20171109-dydo-interview-coffee-development_KijiListUeLink']); ga('send', 'event', 'outgoing', 'click', '/outgoing/20171109-dydo-interview-coffee-development_KijiListUeLink');">コーヒーを「バケツ一杯飲んだ」ダイドーブレンド開発秘話はマジなのか？過去・現在・未来のダイドードリンコ開発の知られざるすごい裏話を聞いてきました</a></h2>
+
+<div class="date"><div class="adtag"><span class="catab">広告</span></div></div>
+</div>
+</div>
+
+
+
+<!-- ad_flag: FALSE --><!-- gpublic_ASO -->
+<div id="LT">
+
+<style>
+.lt_responsive { width: 300px; height: 250px; display:block;}
+@media(min-width: 980px) { .lt_responsive { width: 200px; height: 200px;} }
+@media(min-width: 1350px) { .lt_responsive { width: 300px; height: 250px;} }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- G_LT_300x250 -->
+<ins class="adsbygoogle lt_responsive"
+     data-ad-client="ca-pub-4478613964609822"
+     data-ad-slot="4971286241"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+  <h3>最新ニュース40件</h3>
+<ul id="list"><li><a href="https://gigazine.net/news/20171114-bill-gates-alzheimer/">ビル・ゲイツが総額113億円をアルツハイマー病の研究に投資</a></li><li><a href="https://gigazine.net/news/20171114-bose-noise-masking-sleepbuds/">Boseが先行テスターを募集するも応募殺到で即終了となった質の高い睡眠を得られるイヤホン「noise-masking sleepbuds」とは？</a></li><li><a href="https://gigazine.net/news/20171114-2018-iphone-3-model/">2018年のiPhoneは「iPhone X」と同じベゼルレスデザインで安価な端末も登場か？</a></li><li><a href="https://gigazine.net/news/20171114-free-prime-video/">無料版のAmazonプライム・ビデオをAmazonが開発中とリークされる</a></li><li><a href="https://gigazine.net/news/20171114-new-spotmini/">ボストン・ダイナミクスの4足ロボット「SpotMini」改良版はキモさが少し減退</a></li><li><a href="https://gigazine.net/news/20171114-visual-intelligence/">視覚的な認識能力はIQとは一致しない</a></li><li><a href="https://gigazine.net/news/20171114-pagedash/">無料でウェブ魚拓のようにページを保存しながらギミックを再現できる「PageDash」でブラウザゲームをまるごと自分用に保存してみた</a></li><li><a href="https://gigazine.net/news/20171114-sex-trigger-cardiac-arrest/">セックス中の「腹上死」は現実、行為中に心停止を起こすケースが一定の割合で存在することが明らかに</a></li><li><a href="https://gigazine.net/news/20171113-enomad-uno-hydroelectric-power/">アウトドアでもモバイル機器を充電できる水力発電機「Enomad-Uno」を使ってみた</a></li><li><a href="https://gigazine.net/news/20171113-6thbyorientalhotel-pancake/">「最高級羽毛布団」と評されるパンケーキをシクスバイオリエンタルで食べてきました</a></li><li><a href="https://gigazine.net/news/20171113-house-bugs/">あなたの家のどの部屋に最も多く虫がいるのか？</a></li><li><a href="https://gigazine.net/news/20171113-let-us-enhance-review/">無料で粗い画像を機械学習したAIがきれいに補完して拡大してくれる「Let&#8217;s Enhance」を使ってみた</a></li><li><a href="https://gigazine.net/news/20171113-headline/">2017年11月13日のヘッドラインニュース</a></li><li><a href="https://gigazine.net/news/20171113-meiji-supercup-sweet-potato/">濃厚でコクがあるさつまいもアイスが楽しめる「明治 エッセルスーパーカップ スイートポテト味」を食べてみたレビュー</a></li><li><a href="https://gigazine.net/news/20171113-how-prevent-email-account-hacked/">Googleが「メールアカウントをハッキングされないようにする方法」を伝授</a></li><li><a href="https://gigazine.net/news/20171113-fly-brain-search-algorithm/">ハエの嗅覚に関するアルゴリズムを利用して検索システムを改良</a></li><li><a href="https://gigazine.net/news/20171113-iphone-x-issue/">iPhone Xに「音割れ」や「ディスプレイ反応低下」などいくつかの不具合が浮上</a></li><li><a href="https://gigazine.net/news/20171113-alibaba-singles-day/">「独身の日」に中国のアリババが仕掛けたオンラインショッピングイベントの取引総額が3兆円弱に到達</a></li><li><a href="https://gigazine.net/news/20171113-super-mario-odyssey-dominoes/">約15万ピースのドミノでスーパーマリオ オデッセイを表現した圧巻のムービー</a></li><li><a href="https://gigazine.net/news/20171113-io-domain/">「.io」ドメインを製品版で採用してはいけない理由</a></li><li><a href="https://gigazine.net/news/20171113-bitcoin-collapse/">仮想通貨BitcoinのハードフォークSegwit2が延期に、分裂騒動が成長を阻害するとの懸念も</a></li><li><a href="https://gigazine.net/news/20171113-lightning-history/">フランス革命時代に描かれた「稲妻」に隠された意味とは？</a></li><li><a href="https://gigazine.net/news/20171113-iphone-x-camera/">iPhone Xのスマホを超越したカメラ性能をプロの写真家が大絶賛、撮影事例も公開中</a></li><li><a href="https://gigazine.net/news/20171112-nintendo-switch-ideal-streaming/">Nintendo Switchはストリーミングサービスを使うには理想的なハードウェア</a></li><li><a href="https://gigazine.net/news/20171112-trustviewer/">無料でインストール＆登録不要で使えるPC遠隔操作ツール「TrustViewer」を使ってみたレビュー</a></li><li><a href="https://gigazine.net/news/20171112-china-ai-police-station/">人工知能によって運営される無人の「AI警察署」が中国で近日登場予定</a></li><li><a href="https://gigazine.net/news/20171112-fukuoka-symbol-mark/">福岡民なら知っている懐かしくなるご当地写真をいろいろと</a></li><li><a href="https://gigazine.net/news/20171112-floresta-tanukitsu/">チョコレートのつぶらな瞳がみつめてくる「タヌキとキツネ」コラボドーナツを食べてほっこり癒されてみた</a></li><li><a href="https://gigazine.net/news/20171112-viagogo/">日本にいながら世界中のスポーツチケットをゲットできる「viagogo」でNBAを生観戦してみた</a></li><li><a href="https://gigazine.net/news/20171112-psychology-behind-spending-big/">「頑張って稼いだお金を高価な物につぎ込んでしまう」行為に隠された心理学</a></li><li><a href="https://gigazine.net/news/20171111-super-mario-odyssey/">新旧マリオの良いとこ取りな「スーパーマリオ オデッセイ」で初心者も上級者も楽しめる圧巻クオリティに感動した</a></li><li><a href="https://gigazine.net/news/20171111-photograph-iss-crossing-full-moon/">国際宇宙ステーションと月が重なる1秒未満のタイミングを狙った写真の撮影に17歳の少年が成功</a></li><li><a href="https://gigazine.net/news/20171111-fortune-city/">自分だけの街を育成しながらゲーム感覚で楽しく家計簿がつけられるアプリ「Fortune City」</a></li><li><a href="https://gigazine.net/news/20171111-misterdonut-christmas-big/">ミスドのクリスマスケーキのようなドーナツ「クリスマスビッグドーナツ」など「クリスマスドーナツ」全11種類を食べてみた</a></li><li><a href="https://gigazine.net/news/20171111-google-weho/">Googleの発売前ハードを体験できる期間限定の公式ストア「Google＠WeHo」に行ってきました</a></li><li><a href="https://gigazine.net/news/20171111-diy-giant-kitkat/">1万3600kcalの巨大キットカットを失敗せずにおうちで作る方法が公開中</a></li><li><a href="https://gigazine.net/news/20171110-shinkansen-500-series-biomimetics/">新幹線の先頭車両は「トンネルドン」対策のために変わった形状になっている</a></li><li><a href="https://gigazine.net/news/20171110-hotmonster/">かき氷だという事実を忘れる濃厚カカオのムースっぽい「バンホーテン ハイカカオ ストロベリーかき氷」などを「ホットモンスター」で食べてみた</a></li><li><a href="https://gigazine.net/news/20171110-eksovest/">電力不要のパワードスーツ「EksoVest」でフォード労働者の事故が83％も激減する絶大な効果を発揮</a></li><li><a href="https://gigazine.net/news/20171110-football-brain/">脳はアメフトをプレイすることでここまで変わってしまう</a></li></ul>
+<ul id="ad">
+<script type="text/javascript">
+    (function(_g) {
+        if (_g._v) return;
+        window.gunosyads = _g;
+        _g.init = function(i) {
+            _g._i = (i) || {}};
+        _g.bid = function(i) {
+            _g._b ? _g._b.push(i) : g._b = [i];
+        };
+        _g._bid = function(i) {
+            _g.__b ? _g.__b.push(i) : _g.__b = [i];
+        };
+        _g._v = "1.3.0"
+    })(window.gunosyads || {});
+</script>
+<script async id="gunosy-ads" type="text/javascript" src="https://assets.gunosy.com/adnet/gunosy_ads.min.js" gunosy-ads-media-id="4644" gunosy-ads-frame-id="11312" gunosy-ads-filler="filler-template"></script>
+<script id="gunosy-ad-box" type="text/template">
+  <style>
+    .gunosy-ads-clickable span {
+      color: #ff0000;
+    }
+  </style>
+    <a href="<%= url %>" class="gunosy-ads-clickable"><span>[PR]</span><%= title %></a>
+</script>
+<li class="gunosy-ads-spot" gunosy-ads-template="gunosy-ad-box"></li>
+<script>
+    window.gunosyads.init();
+</script>
+</ul>
+
+
+
+
+<!-- ad_flag: FALSE --><!-- gpublic_ASO -->
+<div id="LB">
+<style>
+.lb_responsive { display: none;}
+@media(min-width: 980px) { .lb_responsive { width: 160px; height: 600px; display:block;} }
+@media(min-width: 1350px) { .lb_responsive { width: 300px; height: 600px; display:block;} }
+</style>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- G_LB_300x600_PC -->
+<ins class="adsbygoogle lb_responsive"
+     data-ad-client="ca-pub-4478613964609822"
+     data-ad-slot="3810133840"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</aside><!-- end_#latest -->
+<aside id="sub">
+
+<!-- gpublic_ASO -->
+
+
+<div id="subNav">
+<dl class="list-1">
+<dt>過去の記事</dt>
+<dd id="calendar"></dd>
+<dd id="ad-rt">
+
+
+
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://gigazine.asia/a/www/delivery/ajs.php':'http://gigazine.asia/a/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=8");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://gigazine.asia/a/www/delivery/ck.php?n=a76d95e8&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://gigazine.asia/a/www/delivery/avw.php?zoneid=8&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a76d95e8' border='0' alt='' /></a></noscript>
+
+</dd>
+</dl>
+<style>
+#ad-rt{margin:0}
+</style>
+<dl class="list-2 navi-list-2col">
+<dt>カテゴリ</dt>
+  <dd><a href="https://gigazine.net/news/C34/"><i class="iconcat icon-catid34"></i><b>ピックアップ</b></a></dd><dd><a href="https://gigazine.net/news/C19/"><i class="iconcat icon-catid19"></i><b>ヘッドライン</b></a></dd><dd><a href="https://gigazine.net/news/C12/"><i class="iconcat icon-catid12"></i><b>レビュー</b></a></dd><dd><a href="https://gigazine.net/news/C22/"><i class="iconcat icon-catid22"></i><b>取材</b></a></dd><dd><a href="https://gigazine.net/news/C17/"><i class="iconcat icon-catid17"></i><b>インタビュー</b></a></dd><dd><a href="https://gigazine.net/news/C13/"><i class="iconcat icon-catid13"></i><b>試食</b></a></dd><dd><a href="https://gigazine.net/news/C18/"><i class="iconcat icon-catid18"></i><b>モバイル</b></a></dd><dd><a href="https://gigazine.net/news/C4/"><i class="iconcat icon-catid4"></i><b>ソフトウェア</b></a></dd><dd><a href="https://gigazine.net/news/C5/"><i class="iconcat icon-catid5"></i><b>ネットサービス</b></a></dd><dd><a href="https://gigazine.net/news/C37/"><i class="iconcat icon-catid37"></i><b>ウェブアプリ</b></a></dd><dd><a href="https://gigazine.net/news/C6/"><i class="iconcat icon-catid6"></i><b>ハードウェア</b></a></dd><dd><a href="https://gigazine.net/news/C30/"><i class="iconcat icon-catid30"></i><b>乗り物</b></a></dd><dd><a href="https://gigazine.net/news/C29/"><i class="iconcat icon-catid29"></i><b>サイエンス</b></a></dd><dd><a href="https://gigazine.net/news/C33/"><i class="iconcat icon-catid33"></i><b>生き物</b></a></dd><dd><a href="https://gigazine.net/news/C9/"><i class="iconcat icon-catid9"></i><b>動画</b></a></dd><dd><a href="https://gigazine.net/news/C23/"><i class="iconcat icon-catid23"></i><b>映画</b></a></dd><dd><a href="https://gigazine.net/news/C20/"><i class="iconcat icon-catid20"></i><b>アニメ</b></a></dd><dd><a href="https://gigazine.net/news/C10/"><i class="iconcat icon-catid10"></i><b>ゲーム</b></a></dd><dd><a href="https://gigazine.net/news/C31/"><i class="iconcat icon-catid31"></i><b>デザイン</b></a></dd><dd><a href="https://gigazine.net/news/C32/"><i class="iconcat icon-catid32"></i><b>アート</b></a></dd><dd><a href="https://gigazine.net/news/C15/"><i class="iconcat icon-catid15"></i><b>食</b></a></dd><dd><a href="https://gigazine.net/news/C7/"><i class="iconcat icon-catid7"></i><b>メモ</b></a></dd><dd><a href="https://gigazine.net/news/C14/"><i class="iconcat icon-catid14"></i><b>セキュリティ</b></a></dd><dd><a href="https://gigazine.net/news/C8/"><i class="iconcat icon-catid8"></i><b>お知らせ</b></a></dd><dd><a href="https://gigazine.net/news/C16/"><i class="iconcat icon-catid16"></i><b>コラム</b></a></dd><dd><a href="https://gigazine.net/news/C36/"><i class="iconcat icon-catid36"></i><b>メンバー限定</b></a></dd><dd><a href="https://gigazine.net/news/C21/"><i class="iconcat icon-catid21"></i><b>広告</b></a></dd>
+</dl><dl class="list-3">
+<dt>サイト内検索</dt>
+<dd id="searchform">
+  <form method="post" action="https://gigazine.net/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="19" />
+<input type="hidden" name="RES" value="" />
+<input type="hidden" name="meta" value="YTo5OntzOjY6InN0YXR1cyI7czowOiIiO3M6NzoiY2hhbm5lbCI7czowOiIiO3M6ODoiY2F0ZWdvcnkiO3M6MDoiIjtzOjk6InNlYXJjaF9pbiI7czoxMDoiZXZlcnl3aGVyZSI7czo1OiJ3aGVyZSI7czowOiIiO3M6MTI6InNob3dfZXhwaXJlZCI7czowOiIiO3M6MTk6InNob3dfZnV0dXJlX2VudHJpZXMiO2I6MDtzOjExOiJyZXN1bHRfcGFnZSI7czoxNDoic2VhcmNoL3Jlc3VsdHMiO3M6MTU6Im5vX3Jlc3VsdHNfcGFnZSI7czowOiIiO304NDk5N2RhOGIzZTdmYmM5YzMwNTNmZmFkMzkyZWRjZQ==" />
+<input type="hidden" name="site_id" value="1" />
+<input type="hidden" name="csrf_token" value="ebc48dcd3761e8154f8f4f649aa28f85ec092f5b" />
+</div>
+
+
+<input type="text" name="keywords" value="" class="input" size="17" maxlength="100" />
+<input type="reset" value="×" class="reset">
+<button type="submit" value="検索" class="submit"><svg class="icon icon-search"><use xlink:href="#icon-search"><title>検索</title></use></svg></button>
+</form>
+<div id='div-gpt-ad-1497835101209-0'>
+<script>
+googletag.cmd.push(function() {googletag.display('div-gpt-ad-1497835101209-0');});
+</script>
+</div>
+<br>
+
+<div class="rcontent">
+<div id='div-gpt-ad-1489570340413-0' style='height:250px; width:300px;'>
+<script>
+googletag.cmd.push(function() {googletag.display('div-gpt-ad-1489570340413-0');});
+</script>
+</div>
+</div>
+</dd>
+</dl>
+</div><!-- end_#subNav -->
+<!-- a_lib_sub -->
+<!-- 20160726_ASO -->
+
+
+  
+  <div id="ranking-entry"><h3>人気記事ランキング</h3><p style="margin:.5rem"><small>直近24時間に読まれた記事のランキング</small>
+<ol style="padding-left:1.2rem">
+  <li style="margin:.5rem 0"><a href="/news/20171113-headline/">2017年11月13日のヘッドラインニュース</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-iphone-x-camera/">iPhone Xのスマホを超越したカメラ性能をプロの写真家が大絶賛、撮影事例も公開中</a></li>  <li style="margin:.5rem 0"><a href="/news/20171112-trustviewer/">無料でインストール＆登録不要で使えるPC遠隔操作ツール「TrustViewer」を使ってみたレビュー</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-io-domain/">「.io」ドメインを製品版で採用してはいけない理由</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-iphone-x-issue/">iPhone Xに「音割れ」や「ディスプレイ反応低下」などいくつかの不具合が浮上</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-how-prevent-email-account-hacked/">Googleが「メールアカウントをハッキングされないようにする方法」を伝授</a></li>  <li style="margin:.5rem 0"><a href="/news/20171112-nintendo-switch-ideal-streaming/">Nintendo Switchはストリーミングサービスを使うには理想的なハードウェア</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-let-us-enhance-review/">無料で粗い画像を機械学習したAIがきれいに補完して拡大してくれる「Let’s Enhance」を使ってみた</a></li>  <li style="margin:.5rem 0"><a href="/news/20171113-lightning-history/">フランス革命時代に描かれた「稲妻」に隠された意味とは？</a></li>  <li style="margin:.5rem 0"><a href="/news/20171112-psychology-behind-spending-big/">「頑張って稼いだお金を高価な物につぎ込んでしまう」行為に隠された心理学</a></li></ol></div>
+  <style>
+    #ranking-entry h3 {
+      margin: 0 0 10px 0;
+      padding: 5px;
+      color: #2F4F2F;
+      background-color: #fef592;
+      font-size: 1.17em;
+    }
+    #ranking-entry li {font-size:.875rem;}
+  </style>
+  
+  
+  <div id="yt-ranking">
+<h3>人気動画</h3>
+<p id="yt-ranking-desc"><small>2017-11-06から2017-11-12の再生回数ランキング</small></p>
+<ul>
+        <li><div><a href="https://www.youtube.com/watch?v=2aqmv-PUS1c" target="_blank"><img data-src="https://i.ytimg.com/vi/2aqmv-PUS1c/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=2aqmv-PUS1c" target="_blank">シーシェパードのアディ・ギル号が沈没</a></div></li>              <li><div><a href="https://www.youtube.com/watch?v=fJo7BFf8CEI" target="_blank"><img data-src="https://i.ytimg.com/vi/fJo7BFf8CEI/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=fJo7BFf8CEI" target="_blank">キモイ顔の貯金箱「FACE BANK」動作ムービー</a></div></li>              <li><div><a href="https://www.youtube.com/watch?v=u-ue0Ez8i7s" target="_blank"><img data-src="https://i.ytimg.com/vi/u-ue0Ez8i7s/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=u-ue0Ez8i7s" target="_blank">1.56秒で180km/hに達する富士急ハイランド「ド・ドドンパ」の加速力3.75Gをプレス向け試乗会で体験してきた</a></div></li>              <li><div><a href="https://www.youtube.com/watch?v=nLwv0pCGgHQ" target="_blank"><img data-src="https://i.ytimg.com/vi/nLwv0pCGgHQ/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=nLwv0pCGgHQ" target="_blank">「V!勇者のくせになまいきだR」ムスメ会話イベント</a></div></li>              <li><div><a href="https://www.youtube.com/watch?v=NyfXaYuTeSg" target="_blank"><img data-src="https://i.ytimg.com/vi/NyfXaYuTeSg/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=NyfXaYuTeSg" target="_blank">富士急ハイランド新絶叫マシーン「高飛車」に乗ってみた</a></div></li>              <li><div><a href="https://www.youtube.com/watch?v=Q3IMO4BMgGQ" target="_blank"><img data-src="https://i.ytimg.com/vi/Q3IMO4BMgGQ/mqdefault.jpg" class="lazyload"></a></div>
+        <div class="yt-ranking-link"><a href="https://www.youtube.com/watch?v=Q3IMO4BMgGQ" target="_blank">素手で銃を持った相手を制圧する米海兵隊の格闘術「MCMAP」のデモ</a></div></li>      </ul>
+</div>
+  <style>
+    #yt-ranking h3 {
+      margin: 0 0 10px 0;
+      padding: 5px;
+      color: #2F4F2F;
+      background-color: #fef592;
+      font-size: 1.17em;
+    }
+    #yt-ranking-desc{
+      margin: .5rem;
+    }
+
+    #yt-ranking ul {margin: 0;padding: .5rem;list-style-type: none;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row;
+
+    }
+
+    #yt-ranking li {margin:.5rem 0;font-size:.875rem;width:33%;max-width:300px;background-color: #fd0;}
+    #yt-ranking img {border:1px solid #ccc;width:100%;max-width:100%;box-sizing: border-box}
+    .yt-ranking-link {font-weight: bold;padding:4px}
+
+    @media all and (min-width: 1250px) {
+      #yt-ranking ul {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+      #yt-ranking li {width:100%}
+    }
+
+  </style>
+  
+
+</aside><!-- end_#sub -->
+</div><!-- end_#main -->
+
+
+
+<footer>
+<dl class="navi-list-2col comments">
+<dt><!-- footer --></dt>
+<dd><form name="iform" method="post" action="/news/contact2/" autocomplete="off" target="_blank"><i class="icon icon-ftid1"></i><input type="submit" value="誤字脱字の指摘" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.net/contact2');"><input type="hidden" name="memid" value="9528"><input type="hidden" name="inqtitle" value="無料でウェブ魚拓のようにページを保存しながらギミックを再現できる「PageDash」でブラウザゲームをまるごと自分用に保存してみた"><input type="hidden" name="inqentryid" value="50663"><input type="hidden" name="inqurl_title" value="20171114-pagedash"><input type="hidden" name="csrf_token" value="ebc48dcd3761e8154f8f4f649aa28f85ec092f5b"></form></dd>
+<dd><a class="tarekomi" href="/news/contact3/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.net/contact3');"><i class="icon icon-ftid2"></i><b>ネタのタレコミ</b></a></dd>
+<dd><a href="/news/contact4/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.net/contact4');"><i class="icon icon-ftid3"></i><b>その他のお問い合わせ</b></a></dd>
+<dd><a href="https://gigazine.biz/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.biz');" target="_blank" rel="nofollow"><i class="icon icon-ftid4"></i><b>広告掲載について</b></a></dd>
+<dd><a href="/news/about/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.net/about');"><i class="icon icon-ftid5"></i><b>GIGAZINEについて</b></a></dd>
+<dd><a href="http://gigazine.co.jp/" onclick="ga('send', 'event', 'outgoing', 'click', '/outgoing/gigazine.co.jp');" target="_blank" rel="nofollow"><i class="icon icon-ftid6"></i><b>採用情報</b></a></dd>
+</dl>
+</footer>
+<!-- a_lib_footer -->
+
+
+
+
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><!-- class="fb" -->
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'ja'}</script><!-- class="gp" --><!-- class="g-follow" -->
+<script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script><!-- class="pk" -->
+
+
+ <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+ <script>
+
+   var OneSignal = OneSignal || [];
+   OneSignal.push(["init", {
+     welcomeNotification: {
+       disable: true
+     },
+     appId: "6eee0595-7d9f-4bd4-9cc8-5163c69775e7",
+     autoRegister: false,
+     subdomainName: 'gigazine',
+     safari_web_id: "web.onesignal.auto.5f176c09-6482-49c9-87ea-0c57aa3981a0",
+     notifyButton: {
+       enable: false
+     },
+     promptOptions: {
+       actionMessage: '通知設定',
+       exampleNotificationTitleDesktop: 'sample:GIGAZINE',
+       exampleNotificationMessageDesktop: 'sample:今日のヘッドライン',
+       exampleNotificationTitleMobile: ' sample:GIGAZINE',
+       exampleNotificationMessageMobile: 'sample:今日のヘッドライン',
+       exampleNotificationCaption: '(通知設定はいつでも停止できます)',
+       acceptButtonText: '通知を許可する',
+       cancelButtonText: '通知は行わない',
+       showCredit : false
+     }
+   }]);
+
+   OneSignal.push(["isPushNotificationsEnabled", function(enabled) {
+     if (enabled){$("#push_on").show();}
+
+     else{$("#push_off").show();}
+   }]);
+
+   $('header').on('click','#push_off',function(event){
+   	
+     $("#push_off").hide();
+     $("#push_on").show();
+     
+     OneSignal.push(["registerForPushNotifications"]);
+     var ua = window.navigator.userAgent.toLowerCase();
+     if (ua.indexOf('safari') != -1) {
+       OneSignal.push(["setSubscription", true]);
+     }
+     
+     event.preventDefault(); 
+    
+   });
+
+   $('header').on('click','#push_on',function(event){
+     $("#push_on").hide();
+     $("#push_off").show();
+     OneSignal.push(["setSubscription", false]);
+     event.preventDefault(); 
+   
+   });
+
+ </script>
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.gigazine.net"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//pw.gigazine.net/pw/";
+    _paq.push(['setTrackerUrl', u+'p.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'p.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//pw.gigazine.net/pw/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+
+
+<script>
+$(document).ready(function(){
+var nowDate = new Date();
+var nowYear = nowDate.getFullYear();
+var nowMonth = nowDate.getMonth() + 1;
+
+var $dir = location.pathname.split("/");
+if ($dir.length < 5) {setCalendar(nowYear,nowMonth);} else {
+  var pathYear = Number($dir[2]);
+  var pathMonth = Number($dir[3]);
+  if ( pathYear > 0 && pathMonth > 0 && pathMonth < 13) {setCalendar(pathYear,pathMonth);} else {setCalendar(nowYear,nowMonth);}
+}
+var nowDate = new Date();
+var year = nowDate.getFullYear();
+var month = nowDate.getMonth() + 1;
+var output = "<option value=\"\">年と月を選択</option>\n";
+while( year >= 2006){          
+  while( month > 0) {
+    if ( !(year == 2006 && month == 1) ){
+      output += "<option value=\"http://gigazine.net/news/"+year+"/"+("0" + month).slice(-2)+"/\">"+year+"年"+month+"月"+"</option>\n";
+    }
+    month--;
+  }
+  year--;
+  month = 12;
+}
+output += "<option value=\"http://gigazine.net/news/2005/12/\">2005年12月</option>\n";
+output += "<option value=\"http://gigazine.net/news/2005/11/\">2005年11月</option>\n";
+output += "<option value=\"http://gigazine.net/news/2005/10/\">2005年10月</option>\n";
+output += "<option value=\"http://gigazine.net/news/2005/07/\">2005年7月</option>\n";
+
+selMonth = $("select[name=\"selmonth\"]");
+selMonth.append(output);
+selMonth.on("change",function(){location.href=$(this).val();});
+});
+
+function setCalendar(yy, mm) {
+var nowDate = new Date();
+var nowYear = nowDate.getFullYear();
+var nowMonth = nowDate.getMonth() + 1;
+var nowDay = nowDate.getDate();
+
+var yy, mm; 
+var zdate = new Date(yy,mm-1,0); 
+var tdate = new Date(yy,mm,0); 
+var rdate = new Date(yy,mm+1,0);
+zedYear = zdate.getFullYear();
+zedMonth = zdate.getMonth()+1;
+zedd = zdate.getDate();
+zedy = zdate.getDay();
+tedYear = tdate.getFullYear();
+tedMonth = tdate.getMonth()+1;
+tedd = tdate.getDate();
+tedy = tdate.getDay();
+rdm  = rdate.getMonth()+1;
+rdy  = rdate.getFullYear();
+
+var days = [];
+if (zedy != 6) {
+  for (var i=zedy; i>=0; i--) {
+    days[zedy-i] = (zedd - i);
+  }
+  for (var i=1; i<=tedd; i++) {
+    days[zedy+i] = i;
+  }
+  if ((zedy + tedd) <= 34) {
+    for (var i=1; i<35-zedy-tedd; i++) {
+      days[zedy+tedd+i] = i;
+    }
+  } else if((zedy + tedd) > 34) {
+    for (var i=1; i<42-zedy-tedd; i++) {
+      days[zedy+tedd+i] = i;
+    }
+}
+
+} else if(zedy == 6) {
+  for (var i=1; i<=tedd; i++) {
+    days[i-1] = i;
+  }
+  for (var i=0; i<35-tedd; i++) {
+    days[tedd+i] = i + 1;
+  }
+}
+
+var out = "<table class=\"calendarBG\">";
+out += "<tr class=\"calendarHeader\"><th class=\"calendarMonthLinks\"><a href=\"/news/"+ zedYear+"/"+("0"+zedMonth).slice(-2) +"/\"> \< </a></th>";
+out += "<th colspan=5 class=\"calendarHeader\">"+yy+'年'+mm+'月'+"</th>";
+out += "<th class=\"calendarMonthLinks\"><a href=\"/news/"+ rdy +"/"+("0"+rdm).slice(-2)+"/\"> \></a></th></tr>\n";
+   var youbi = ["日", "月", "火", "水", "木", "金", "土"];
+out += "<tr class=\"calendarHeader\">";
+for (var i in youbi) {
+  out += "<th class=\"calendarDayHeading\">"+youbi[i]+"</th>\n";
+}
+out += "</tr>\n";
+
+var row = days.length/7;
+var todayClass = "";
+for (var i=1; i<=row; i++) {
+  out += "<tr>";
+  for (var j=7*i-6; j<=7*i; j++) {
+    todayClass = "";
+    
+    if ( i == 1 && days[j-1] > 20 ) {
+      out += "<td class=\"calendarBlank\">"+days[j-1]+"</td>";
+    } else if ( i == row && days[j-1] < 10) {
+      out += "<td class=\"calendarBlank\">"+days[j-1]+"</td>";
+      
+    } else {
+      if ( nowYear == tedYear && nowMonth == tedMonth && nowDay == days[j-1]) {
+        todayClass = "calendarToday ";
+      }
+      
+      sday = new Date(tedYear,tedMonth-1,days[j-1]);
+      
+      if ( sday.getTime() < nowDate.getTime() ){
+      	if ( todayClass == "") {
+          out += "<td class=\"calendarCell\">"+"<a href=\"/news/"+tedYear+"/"+("0"+tedMonth).slice(-2)+"/"+("0" + days[j-1]).slice(-2)+"/\">"+days[j-1]+"</a></td>";
+        } else {
+          out += "<td class=\"calendarToday\">"+"<a href=\"/news/"+tedYear+"/"+("0"+tedMonth).slice(-2)+"/"+("0" + days[j-1]).slice(-2)+"/\">"+days[j-1]+"</a></td>"; 
+        }
+      } else {
+      if ( todayClass == "") {
+        out += "<td class=\"calendarCell\">"+days[j-1]+"</td>";
+        } else {
+        out += "<td class=\"calendarToday\">"+days[j-1]+"</td>";
+        }
+      }
+    }
+  }
+  out += "</tr>";
+}
+out += "</table>";
+
+out += "<form style=\"padding:10px 0 10px 0;\" name=\"monthmenu\" action=\"\">";
+out += "<select class=\"selmonth\" name=\"selmonth\">";
+out += "</select>";
+out += "</form>";
+
+
+$("#calendar").html(out);
+}
+</script>
+<!-- a_lib_js_pagelast -->
+</body>
+</html><!-- comments_no_login -->
