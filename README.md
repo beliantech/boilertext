@@ -16,4 +16,4 @@ See https://github.com/abadojack/whatlanggo for language detection feature suppo
 
 ## Performance
 
-I did a benchmark, and it actually shows that naive string concatenation is faster than bytes.Buffer. And since most HTML is sort of lightweight with hundreds of text blocks, string concatenation will be just fine. My results corroborate with https://github.com/hermanschaaf/go-string-concat-benchmarks.
+I did a benchmark, and it actually shows that naive string concatenation is faster than bytes.Buffer. And since most HTML is sort of lightweight with text block count in the order of _hundreds_, string concatenation will be just fine. My results corroborate with https://github.com/hermanschaaf/go-string-concat-benchmarks.
