@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"strings"
-	"unicode"
 
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
@@ -41,40 +40,21 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 	var bufferText string
 	var bufferAnchorText string
 
-	prevWasInline := false
-
 	var bufferAppend func(s string, isAnchor bool)
 	bufferAppend = func(s string, isAnchor bool) {
 		// Normalize whitespace to max 1 whitespace.
-		startWS := false
-		endWS := false
-		if strings.HasPrefix(s, " ") {
-			startWS = true
-		}
-		if strings.HasSuffix(s, " ") {
-			endWS = true
-		}
-		if startWS || endWS {
-			s = strings.TrimSpace(s)
-
-			if startWS {
-				s = " " + s
-			}
-			if endWS {
-				s = s + " "
-			}
-		}
-
-		if strings.HasSuffix(bufferText, " ") || prevWasInline {
+		// This does not preserve the original spacing in some cases, but we'd rather have extra spaces than joined words.
+		s = strings.TrimSpace(s)
+		if strings.HasSuffix(bufferText, " ") {
 			bufferText += s
 		} else {
-			bufferText += " " + strings.TrimLeftFunc(s, unicode.IsSpace)
+			bufferText += " " + s
 		}
 		if isAnchor {
-			if strings.HasSuffix(bufferAnchorText, " ") || prevWasInline {
+			if strings.HasSuffix(bufferAnchorText, " ") {
 				bufferAnchorText += s
 			} else {
-				bufferAnchorText += " " + strings.TrimLeftFunc(s, unicode.IsSpace)
+				bufferAnchorText += " " + s
 			}
 		}
 	}
@@ -93,14 +73,12 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 					fmt.Println("ANCHOR", n.Data)
 					bufferAppend(n.Data, true)
 				}
-				prevWasInline = true
 			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
 				// Don't append whitespace
 				if trimmedData != "" {
 					fmt.Println("INLINE", n.Data)
 					bufferAppend(n.Data, false)
 				}
-				prevWasInline = true
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
 				// Ignore
 			default:
@@ -146,7 +124,6 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 				// Reset buffers
 				bufferText = ""
 				bufferAnchorText = ""
-				prevWasInline = false
 			}
 		}
 
