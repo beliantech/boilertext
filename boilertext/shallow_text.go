@@ -42,6 +42,23 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 	var bufferAnchorText string
 
 	prevWasInline := false
+
+	var bufferAppend func(s string, isAnchor bool)
+	bufferAppend = func(s string, isAnchor bool) {
+		if strings.HasSuffix(bufferText, " ") || prevWasInline {
+			bufferText += s
+		} else {
+			bufferText += " " + strings.TrimLeftFunc(s, unicode.IsSpace)
+		}
+		if isAnchor {
+			if strings.HasSuffix(bufferAnchorText, " ") || prevWasInline {
+				bufferAnchorText += s
+			} else {
+				bufferAnchorText += " " + strings.TrimLeftFunc(s, unicode.IsSpace)
+			}
+		}
+	}
+
 	var f func(n *html.Node)
 	f = func(n *html.Node) {
 		if n.Type == html.TextNode {
@@ -54,28 +71,14 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 			case atom.A:
 				if trimmedData != "" {
 					fmt.Println("ANCHOR", n.Data)
-					if strings.HasSuffix(bufferText, " ") {
-						bufferText += n.Data
-					} else {
-						bufferText += " " + n.Data
-					}
-
-					if strings.HasSuffix(bufferAnchorText, " ") {
-						bufferAnchorText += n.Data
-					} else {
-						bufferAnchorText += " " + n.Data
-					}
+					bufferAppend(n.Data, true)
 				}
 				prevWasInline = true
 			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
 				// Don't append whitespace
 				if trimmedData != "" {
 					fmt.Println("INLINE", n.Data)
-					if strings.HasSuffix(bufferText, " ") {
-						bufferText += n.Data
-					} else {
-						bufferText += " " + n.Data
-					}
+					bufferAppend(n.Data, false)
 				}
 				prevWasInline = true
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
@@ -83,17 +86,8 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 			default:
 				// Generate a new block
 				if trimmedData != "" {
-					if strings.HasSuffix(bufferText, " ") {
-						bufferText += strings.TrimLeftFunc(n.Data, unicode.IsSpace)
-					} else {
-						if prevWasInline {
-							// No whitespace prepend when previous text node was inline block.
-							bufferText += n.Data
-						} else {
-							bufferText += " " + strings.TrimLeftFunc(n.Data, unicode.IsSpace)
-						}
-					}
 					fmt.Println("DEFAULT BLOCK DATA", n.Data)
+					bufferAppend(n.Data, false)
 				}
 
 				// Retrieve bytes
