@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"unicode"
 
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
@@ -40,8 +41,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 	var bufferText string
 	var bufferAnchorText string
 
-	blockCount := 0
-
+	prevWasInline := false
 	var f func(n *html.Node)
 	f = func(n *html.Node) {
 		if n.Type == html.TextNode {
@@ -52,23 +52,47 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 			switch n.Parent.DataAtom {
 			case atom.A:
-				fmt.Println("ANCHOR", n.Data)
 				if trimmedData != "" {
-					bufferText += n.Data
-					bufferAnchorText += n.Data
+					fmt.Println("ANCHOR", n.Data)
+					if strings.HasSuffix(bufferText, " ") {
+						bufferText += n.Data
+					} else {
+						bufferText += " " + n.Data
+					}
+
+					if strings.HasSuffix(bufferAnchorText, " ") {
+						bufferAnchorText += n.Data
+					} else {
+						bufferAnchorText += " " + n.Data
+					}
 				}
+				prevWasInline = true
 			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
 				// Don't append whitespace
 				if trimmedData != "" {
 					fmt.Println("INLINE", n.Data)
-					bufferText += n.Data
+					if strings.HasSuffix(bufferText, " ") {
+						bufferText += n.Data
+					} else {
+						bufferText += " " + n.Data
+					}
 				}
+				prevWasInline = true
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
 				// Ignore
 			default:
 				// Generate a new block
 				if trimmedData != "" {
-					bufferText += n.Data
+					if strings.HasSuffix(bufferText, " ") {
+						bufferText += strings.TrimLeftFunc(n.Data, unicode.IsSpace)
+					} else {
+						if prevWasInline {
+							// No whitespace prepend when previous text node was inline block.
+							bufferText += n.Data
+						} else {
+							bufferText += " " + strings.TrimLeftFunc(n.Data, unicode.IsSpace)
+						}
+					}
 					fmt.Println("DEFAULT BLOCK DATA", n.Data)
 				}
 
@@ -104,13 +128,11 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 					NumOfAnchorWords: anchorTextCount,
 					Content:          bufferText,
 				})
-				blockCount++
-
-				fmt.Println("NEW BLOCK CONTENT", bufferText, "COUNT", blockCount)
 
 				// Reset buffers
 				bufferText = ""
 				bufferAnchorText = ""
+				prevWasInline = false
 			}
 		}
 
@@ -125,7 +147,6 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 	var contentText string
 	var curr, prev, next *TextBlock
-	fmt.Println("BLOCK LENGTH", len(blocks))
 	for i := range blocks {
 		curr = blocks[i]
 		fmt.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", string(curr.Content))
@@ -173,7 +194,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 		}
 
 		if isContent {
-			contentText += curr.Content
+			contentText += strings.TrimSpace(curr.Content) + " "
 		}
 	}
 
