@@ -2,6 +2,7 @@ package boilertext
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"strings"
@@ -14,7 +15,7 @@ import (
 type TextBlock struct {
 	NumOfWords       int
 	NumOfAnchorWords int
-	Content          string
+	Content          []byte
 }
 
 func (t *TextBlock) LinkDensity() float64 {
@@ -30,6 +31,7 @@ type ShallowTextExtractor struct {
 	splitStrategy bufio.SplitFunc
 }
 
+// NewShallowTextExtractor returns a ShallowTextExtractor
 func NewShallowTextExtractor(splitStrategy bufio.SplitFunc) *ShallowTextExtractor {
 	return &ShallowTextExtractor{
 		splitStrategy: splitStrategy,
@@ -37,31 +39,33 @@ func NewShallowTextExtractor(splitStrategy bufio.SplitFunc) *ShallowTextExtracto
 }
 
 // Process takes raw HTML as an input and returns content text of that HTML minus the boilerplate.
-func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
+func (s ShallowTextExtractor) Process(reader io.Reader) ([]byte, error) {
 	node, err := html.Parse(reader)
 	if err != nil {
-		return "", errors.Wrap(err, "Parse HTML error")
+		return nil, errors.Wrap(err, "Parse HTML error")
 	}
 
 	blocks := make([]*TextBlock, 0, 20)
-	var bufferText string
-	var bufferAnchorText string
+	var bufferText bytes.Buffer
+	var bufferAnchorText bytes.Buffer
 
 	var bufferAppend func(s string, isAnchor bool)
 	bufferAppend = func(s string, isAnchor bool) {
 		// Normalize whitespace to max 1 whitespace.
 		// This does not preserve the original spacing in some cases, but we'd rather have extra spaces than joined words.
 		s = strings.TrimSpace(s)
-		if strings.HasSuffix(bufferText, " ") {
-			bufferText += s
+		if bytes.HasSuffix(bufferText.Bytes(), []byte(" ")) {
+			bufferText.WriteString(s)
 		} else {
-			bufferText += " " + s
+			bufferText.WriteString(" ")
+			bufferText.WriteString(s)
 		}
 		if isAnchor {
-			if strings.HasSuffix(bufferAnchorText, " ") {
-				bufferAnchorText += s
+			if bytes.HasSuffix(bufferAnchorText.Bytes(), []byte(" ")) {
+				bufferAnchorText.WriteString(s)
 			} else {
-				bufferAnchorText += " " + s
+				bufferAnchorText.WriteString(" ")
+				bufferAnchorText.WriteString(s)
 			}
 		}
 	}
@@ -98,13 +102,16 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 				// Retrieve bytes
 
 				// Quit if nothing here
-				if len(bufferText) == 0 {
-					bufferText = ""
-					bufferAnchorText = ""
+				if bufferText.Len() == 0 {
+					bufferText.Reset()
+					bufferAnchorText.Reset()
 					return
 				}
 
-				textScanner := bufio.NewScanner(strings.NewReader(bufferText))
+				bufferTextBytesCopy := make([]byte, bufferText.Len())
+				copy(bufferTextBytesCopy, bufferText.Bytes())
+
+				textScanner := bufio.NewScanner(bytes.NewReader(bufferTextBytesCopy))
 				// Set the split function for the scanning operation.
 				textScanner.Split(s.splitStrategy)
 				// Count the words.
@@ -113,7 +120,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 					textCount++
 				}
 
-				anchorTextScanner := bufio.NewScanner(strings.NewReader(bufferAnchorText))
+				anchorTextScanner := bufio.NewScanner(bytes.NewReader(bufferAnchorText.Bytes()))
 				// Set the split function for the scanning operation.
 				anchorTextScanner.Split(s.splitStrategy)
 				// Count the words.
@@ -125,12 +132,12 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 				blocks = append(blocks, &TextBlock{
 					NumOfWords:       textCount,
 					NumOfAnchorWords: anchorTextCount,
-					Content:          bufferText,
+					Content:          bufferTextBytesCopy,
 				})
 
 				// Reset buffers
-				bufferText = ""
-				bufferAnchorText = ""
+				bufferText.Reset()
+				bufferAnchorText.Reset()
 			}
 		}
 
@@ -143,7 +150,7 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 	// Block processing complete. Let's gather the wheat and discard the chaff.
 
-	var contentText string
+	var contentText bytes.Buffer
 	var curr, prev, next *TextBlock
 	for i := range blocks {
 		curr = blocks[i]
@@ -192,9 +199,10 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 		}
 
 		if isContent {
-			contentText += strings.TrimSpace(curr.Content) + " "
+			contentText.Write(bytes.TrimSpace(curr.Content))
+			contentText.WriteString(" ")
 		}
 	}
 
-	return contentText, nil
+	return contentText.Bytes(), nil
 }
