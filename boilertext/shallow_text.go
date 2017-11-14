@@ -45,6 +45,26 @@ func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
 
 	var bufferAppend func(s string, isAnchor bool)
 	bufferAppend = func(s string, isAnchor bool) {
+		// Normalize whitespace to max 1 whitespace.
+		startWS := false
+		endWS := false
+		if strings.HasPrefix(s, " ") {
+			startWS = true
+		}
+		if strings.HasSuffix(s, " ") {
+			endWS = true
+		}
+		if startWS || endWS {
+			s = strings.TrimSpace(s)
+
+			if startWS {
+				s = " " + s
+			}
+			if endWS {
+				s = s + " "
+			}
+		}
+
 		if strings.HasSuffix(bufferText, " ") || prevWasInline {
 			bufferText += s
 		} else {
