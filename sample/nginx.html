@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Nginx returns error on file upload | kill the radio</title>
+	<meta name="description" content="I love Nginx and have never had a problem with it. Until now.">
+
+	<link rel="stylesheet" href="/css/reset.v12.css">
+	<link rel="stylesheet" href="/css/main.v12.css">
+	<link rel="stylesheet" href="/css/highlight/hybrid.v12.css">
+	<link rel="canonical" href="http://killtheradio.net/technology/nginx-returns-error-on-file-upload/">
+	<link rel="alternate" type="application/rss+xml" title="kill the radio" href="http://killtheradio.net/feed.xml" />
+
+	<script src="/js/mootools-core-1.5.1.js"></script>
+	<script src="/js/composer-1.2.13.min.js"></script>
+	<script src="/js/highlight.pack.v12.js"></script>
+	<script src="/js/controllers/nav.v12.js"></script>
+	<script src="/js/main.v12.js"></script>
+
+	<link rel="shortcut icon" href="/images/favicon.png">
+</head>
+
+	<body>
+		<div id="container" class="clear">
+			<nav>
+	<a href="#nav"><icon>&#9776;</icon></a>
+</nav>
+<header>
+	<div class="gutter">
+		<h1><a href="/"><span>Kill the radio (or die trying)</span></a></h1>
+
+		<ul class="projects">
+			<!--
+			<li class="marketspace">
+				<a href="https://market.space" title="MarketSpace: Competitive intelligence delivered to your doorstep">
+					<img src="/images/projects/marketspace/logo.v1.png" width="150" height="150" alt="turtl">
+				</a>
+			</li>
+			-->
+			<li class="turtl">
+				<a href="https://turtlapp.com" title="Turtl: Open source, private Evernote alternative">
+					<img src="/images/projects/turtl/logo.v1.png" width="150" height="150" alt="turtl">
+				</a>
+			</li>
+			<li class="faxrobot">
+				<a href="https://faxrobot.com/" title="Fax Robot: Upload documents, send faxes. Low price tag.">
+					<img src="/images/projects/faxrobot/logo.v1.png" width="150" height="150" alt="faxrobot">
+				</a>
+			</li>
+			<li class="composer">
+				<a href="https://lyonbros.github.io/composer.js" title="Composer: a set of stackable libraries for building complex single-page apps.">
+					<img src="/images/projects/composer/logo.v2.png" width="150" height="150" alt="composer.js">
+				</a>
+			</li>
+			<li class="wookie">
+				<a href="http://wookie.lyonbros.com" title="Wookie: Common Lisp's best async app server">
+					<img src="/images/projects/wookie/logo.v1.png" width="150" height="150" alt="wookie lisp server">
+				</a>
+			</li>
+		</ul>
+
+		<p class="about">
+			Hi, I'm Andrew Lyon.<br>
+			I surf the California coast a lot. I'm working on a project called
+			<a href="https://turtlapp.com">Turtl</a>...a private Evernote alternative
+			that uses cryptography to keep your data safe.  I write a lot of
+			<a href="https://github.com/orthecreedence">open-source code</a>.
+			Check out more projects at <a href="http://lyonbros.com">Lyon Bros.</a>,
+			unless you <em>hate children</em>. You don't hate children, do you??
+		</p>
+
+		<ul class="links">
+			<li class="twitter"><a href="https://twitter.com/killltheradio"><icon>&#62217;</icon></a></li>
+			<li class="github"><a href="https://github.com/orthecreedence"><icon>&#62208;</icon></a></li>
+		</ul>
+
+		<div class="recent">
+			<h3>Recent posts</h3>
+			<ul>
+
+					<li>
+						<a href="/technology/how-to-really-save-net-neutrality/">How to really save Net Neutrality</a>
+					</li>
+
+					<li>
+						<a href="/technology/debug-comments-or-how-to-save-your-sanity-using-git/">Debug comments (or how to save your sanity using git)</a>
+					</li>
+
+					<li>
+						<a href="/social%20issues/the-world-is-burning/">The world is burning</a>
+					</li>
+
+					<li>
+						<a href="/technology/ansible-included-handlers-not-running/">Ansible: included handlers not running in v2.x</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-we-are-expert/">Spam entry: We are expert</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-send-us-money/">Spam entry: Send us money so people can find your site!</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-logo-cheese/">Spam entry: Logo Cheese</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-add-me-to-your-address-book/">Spam entry: Add me to your address book</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-a-website-for-free/">Spam entry: A website, for FREE</a>
+					</li>
+
+					<li>
+						<a href="/funny/spam-a-reputed-web-design-company-without-a-website/">Spam entry: A reputed web design company (with no website)</a>
+					</li>
+
+					<li>
+						<a href="/technology/marketspace-competitive-intelligence-for-your-industry/">MarketSpace: Competitive intelligence for your industry</a>
+					</li>
+
+					<li>
+						<a href="/technology/ssh-public-key-fix/">SSH public key fix</a>
+					</li>
+
+					<li>
+						<a href="/technology/nginx-returns-error-on-file-upload/">Nginx returns error on file upload</a>
+					</li>
+
+					<li>
+						<a href="/technology/turtls-new-syncing-architecture/">Turtl's new syncing architecture</a>
+					</li>
+
+					<li>
+						<a href="/how-tos/squeezebox-setup-without-remote/">Squeezebox setup without the remote/controller</a>
+					</li>
+
+					<li>
+						<a href="/reviews/harrys-razors-review/">Harry's razors review</a>
+					</li>
+
+					<li>
+						<a href="/technology/hackernews-a-typical-day/">Hackernews: a typical day</a>
+					</li>
+
+					<li>
+						<a href="/updates/switching-to-jekyll/">Switching to Jekyll</a>
+					</li>
+
+					<li>
+						<a href="/tricks-hacks/node-js-and-cygwin-unknown-system-errno-203/">Node.js and Cygwin: Unknown system errno 203</a>
+					</li>
+
+					<li>
+						<a href="/technology/sudoers-syntax-error-for-specific-commands/">Sudoers syntax error for specific commands</a>
+					</li>
+
+			</ul>
+		</div>
+
+		<p class="subscribe">
+			<a href="/feed.xml">Subscribe <icon>&#59194;</icon></a>
+		</p>
+	</div>
+</header>
+
+
+			<div class="page-content">
+				<div class="wrapper">
+					<div class="post">
+	<div class="post-header">
+	<p class="date">2015<span>09.05</span></p>
+	<h1>
+		<a class="post-link" href="/technology/nginx-returns-error-on-file-upload/">Nginx returns error on file upload</a>
+	</h1>
+</div>
+
+<article>
+
+		<p>I love Nginx and have never had a problem with it. Until now.</p>
+
+<p><a href="https://turtl.it">Turtl, the private Evernote alternative</a>, allows uploading
+files securely. However, after switching to a new server on <a href="https://www.linode.com/?r=15d5d2323910d69794b93ed02cd7d43b2f68d8c5">Linode</a>,
+uploads broke for files over 10K. The server was returning a 404.</p>
+
+<p>I finally managed to reproduce the problem in cURL, and to my surprise, the
+requests were getting stopped by Nginx. All other requests were going through
+fine, and the error only happened when uploading a file of 10240 bytes or more.</p>
+
+<p>First thing I though was that Nginx v1.8.0 had a bug. Nobody on the internet
+seemed to have this problem. So I installed v1.9.4. Now the server returned a
+500 error instead of a 404. Still no answer to <em>why</em>.</p>
+
+<p>I finally found it: playing with <code class="highlighter-rouge">client_body_buffer_size</code> seemed to change the
+threshold for which files would trigger the error and which wouldn’t, but
+ultimately the error was still there. Then I read about how Nginx uses
+temporary files to store body data. I checked that folder (in my case
+<code class="highlighter-rouge">/var/lib/nginx/client_body</code>) and the folder was writeable by the <code class="highlighter-rouge">nginx</code> user,
+however the parent folder <code class="highlighter-rouge">/var/lib/nginx</code> was owned by <code class="highlighter-rouge">root:root</code> and was set
+to <code class="highlighter-rouge">0700</code>. I set <code class="highlighter-rouge">/var/lib/nginx</code> to be readable/writable by user <code class="highlighter-rouge">nginx</code>, and
+it all started working.</p>
+
+<h2 id="check-your-permissions">Check your permissions</h2>
+
+<p>So, check your folder permissions. Nginx wasn’t returning any useful errors
+(first a 404, which I’m assuming was a bug fixed in a later version) then a 500
+error. It’s important to note that after switching to v1.9.4, the Permission
+Denied error <em>did</em> show up in the error log, but at that point I had already
+decided the logs were useless (v1.8.0 silently ignored the problem).</p>
+
+<h2 id="another-problem">Another problem</h2>
+
+<p>This is an edit! Shortly after I applied the above fix, I started getting
+another error. My backend was getting the requests, but the entire request was
+being buffered by Nginx before being proxied. This is annoying to me because the
+backend is async and is made to stream large uploads.</p>
+
+<p>After some research, I found the fix (I put this in the backend proxy’s
+<code class="highlighter-rouge">location</code> block:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>proxy_request_buffering off;
+</code></pre>
+</div>
+
+<p>This tells Nginx to just stream the request to the backend (exactly what I want).</p>
+
+
+
+</article>
+
+
+
+
+
+	<ul class="tags">
+		<li><icon>&#59148;</icon></li>
+
+			<li><a href="/tag/nginx">nginx</a></li>
+
+			<li><a href="/tag/debugging">debugging</a></li>
+
+			<li><a href="/tag/software">software</a></li>
+
+	</ul>
+
+
+
+
+	<a name="comments"></a>
+	<div class="comments">
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			/* * * CONFIGURATION VARIABLES * * */
+			var disqus_shortname = 'killtheradio';
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+	</div>
+</div>
+
+
+				</div>
+			</div>
+			<footer>
+</footer>
+
+		</div>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.killtheradio.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 4]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="http://stats.killtheradio.net/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+<!--<script src="https://widget.battleforthenet.com/widget.js" async></script>-->
+
+	</body>
+</html>

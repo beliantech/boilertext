@@ -23,38 +23,50 @@ func main() {
 
 	var blocks []*boilertext.TextBlock
 
-	var ex boilertext.Extractor
-	if *extractorPtr == "shallow" {
+	genBlocksBasedOnFlag := func(file *os.File) {
+		defer file.Close()
 		if *splitPtr == "word" {
 			blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanWords)
 			if err != nil {
 				log.Fatal(err)
 			}
-			ex = extractor.ShallowTextExtractor{}
 		} else if *splitPtr == "rune" {
 			blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanRunes)
 			if err != nil {
 				log.Fatal(err)
 			}
-			ex = extractor.ShallowTextExtractor{}
 		} else {
 			log.Fatal("Missing split argument")
 		}
+	}
+
+	var ex boilertext.Extractor
+	if *extractorPtr == "shallow" {
+		ex = extractor.ShallowTextExtractor{}
+		genBlocksBasedOnFlag(file)
 	} else {
 		// Returns all text
-		blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanWords)
+		ex = &extractor.AllTextExtractor{}
+		genBlocksBasedOnFlag(file)
 
 		// Calculate percentage of words that are links
+		linkCount := 0
 		linkWordCount := 0
 		wordCount := 0
 		for _, block := range blocks {
 			linkWordCount += block.NumOfAnchorWords
 			wordCount += block.NumOfWords
-		}
-		fmt.Println("Percentage of words are links:", float64(linkWordCount)/float64(wordCount)*100.0, "%")
 
-		ex = &extractor.AllTextExtractor{}
+			if block.NumOfAnchorWords > 0 {
+				linkCount++
+			}
+			fmt.Println("BLOCK", block)
+		}
+
+		fmt.Println("Percentage of words are links:", float64(linkWordCount)/float64(wordCount)*100.0, "%")
+		fmt.Println("Percentage of blocks containing links:", float64(linkCount)/float64(len(blocks))*100.0, "%")
 	}
+
 	res, err := ex.Process(blocks)
 	if err != nil {
 		log.Fatal("Extractor failed")
