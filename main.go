@@ -43,6 +43,16 @@ func main() {
 	} else {
 		// Returns all text
 		blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanWords)
+
+		// Calculate percentage of words that are links
+		linkWordCount := 0
+		wordCount := 0
+		for _, block := range blocks {
+			linkWordCount += block.NumOfAnchorWords
+			wordCount += block.NumOfWords
+		}
+		fmt.Println("Percentage of words are links:", float64(linkWordCount)/float64(wordCount)*100.0, "%")
+
 		ex = &extractor.AllTextExtractor{}
 	}
 	res, err := ex.Process(blocks)
