@@ -13,6 +13,7 @@ import (
 
 func main() {
 	splitPtr := flag.String("split", "word", "a string")
+	extractorPtr := flag.String("extractor", "shallow", "a string")
 	flag.Parse()
 
 	file, err := os.Open("sample/" + os.Args[len(os.Args)-1])
@@ -21,12 +22,17 @@ func main() {
 	}
 
 	var ex boilertext.Extractor
-	if *splitPtr == "word" {
-		ex = extractor.NewShallowTextExtractor(bufio.ScanWords)
-	} else if *splitPtr == "rune" {
-		ex = extractor.NewShallowTextExtractor(bufio.ScanRunes)
+	if *extractorPtr == "shallow" {
+		if *splitPtr == "word" {
+			ex = extractor.NewShallowTextExtractor(bufio.ScanWords)
+		} else if *splitPtr == "rune" {
+			ex = extractor.NewShallowTextExtractor(bufio.ScanRunes)
+		} else {
+			log.Fatal("Missing split argument")
+		}
 	} else {
-		log.Fatal("Missing split argument")
+		// Returns all text
+		ex = &extractor.AllTextExtractor{}
 	}
 	res, err := ex.Process(file)
 	if err != nil {
