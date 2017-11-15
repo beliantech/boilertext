@@ -42,6 +42,7 @@ func main() {
 		}
 	} else {
 		// Returns all text
+		blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanWords)
 		ex = &extractor.AllTextExtractor{}
 	}
 	res, err := ex.Process(blocks)
