@@ -1,39 +1,23 @@
 package extractor
 
 import (
-	"bufio"
-	"io"
 	"strings"
 
-	"github.com/PageDash/boilertext/pkg"
-	"github.com/PageDash/boilertext/pkg/util"
+	"github.com/PageDash/boilertext/pkg/boilertext"
+	"github.com/PageDash/boilertext/pkg/log"
 )
 
 // ShallowTextExtractor is an implementation of BoilerText
-type ShallowTextExtractor struct {
-	splitStrategy bufio.SplitFunc
-}
-
-// NewShallowTextExtractor returns a ShallowTextExtractor
-func NewShallowTextExtractor(splitStrategy bufio.SplitFunc) *ShallowTextExtractor {
-	return &ShallowTextExtractor{
-		splitStrategy: splitStrategy,
-	}
-}
+type ShallowTextExtractor struct{}
 
 // Process takes raw HTML as an input and returns content text of that HTML minus the boilerplate.
-func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
-	blocks, err := boilertext.GenerateTextBlocks(reader, s.splitStrategy)
-	if err != nil {
-		return "", err
-	}
-
+func (s ShallowTextExtractor) Process(blocks []*boilertext.TextBlock) (string, error) {
 	// Block processing complete. Let's gather the wheat and discard the chaff.
 	var contentText string
 	var curr, prev, next *boilertext.TextBlock
 	for i := range blocks {
 		curr = blocks[i]
-		util.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", curr.Content)
+		log.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", curr.Content)
 
 		if i == 0 {
 			prev = nil

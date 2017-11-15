@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/PageDash/boilertext/pkg/util"
+	"github.com/PageDash/boilertext/pkg/log"
 	"github.com/pkg/errors"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
@@ -14,7 +14,7 @@ import (
 // Extractor is an interface that processes incoming HTML and
 // outputs text within HTML minus all the boilerplate
 type Extractor interface {
-	Process(html io.Reader) (string, error)
+	Process(blocks []*TextBlock) (string, error)
 }
 
 // TextBlock represents a text block which may comprise of inline elements.
@@ -68,19 +68,19 @@ func GenerateTextBlocks(reader io.Reader, splitStrategy bufio.SplitFunc) ([]*Tex
 		if n.Type == html.TextNode {
 			trimmedData := strings.TrimSpace(n.Data)
 			if trimmedData != "" {
-				util.Println("TEXT NODE", "Parent:", n.Parent.DataAtom, "Data:", n.Data, "NextSibling:", n.NextSibling)
+				log.Println("TEXT NODE", "Parent:", n.Parent.DataAtom, "Data:", n.Data, "NextSibling:", n.NextSibling)
 			}
 
 			switch n.Parent.DataAtom {
 			case atom.A:
 				if trimmedData != "" {
-					util.Println("ANCHOR", n.Data)
+					log.Println("ANCHOR", n.Data)
 					bufferAppend(n.Data, true)
 				}
 			case atom.Strike, atom.U, atom.B, atom.I, atom.Em, atom.Strong, atom.Span, atom.Sup, atom.Code, atom.Tt, atom.Sub, atom.Var, atom.Font, atom.Time:
 				// Don't append whitespace
 				if trimmedData != "" {
-					util.Println("INLINE", n.Data)
+					log.Println("INLINE", n.Data)
 					bufferAppend(n.Data, false)
 				}
 			case atom.Style, atom.Script, atom.Option, atom.Object, atom.Embed, atom.Applet, atom.Link, atom.Noscript:
@@ -88,7 +88,7 @@ func GenerateTextBlocks(reader io.Reader, splitStrategy bufio.SplitFunc) ([]*Tex
 			default:
 				// Generate a new block
 				if trimmedData != "" {
-					util.Println("DEFAULT BLOCK DATA", n.Data)
+					log.Println("DEFAULT BLOCK DATA", n.Data)
 					bufferAppend(n.Data, false)
 				}
 

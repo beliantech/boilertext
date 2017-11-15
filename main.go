@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/PageDash/boilertext/pkg"
+	"github.com/PageDash/boilertext/pkg/boilertext"
 	"github.com/PageDash/boilertext/pkg/extractor"
 )
 
@@ -21,12 +21,22 @@ func main() {
 		log.Fatal("Failed to open file")
 	}
 
+	var blocks []*boilertext.TextBlock
+
 	var ex boilertext.Extractor
 	if *extractorPtr == "shallow" {
 		if *splitPtr == "word" {
-			ex = extractor.NewShallowTextExtractor(bufio.ScanWords)
+			blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanWords)
+			if err != nil {
+				log.Fatal(err)
+			}
+			ex = extractor.ShallowTextExtractor{}
 		} else if *splitPtr == "rune" {
-			ex = extractor.NewShallowTextExtractor(bufio.ScanRunes)
+			blocks, err = boilertext.GenerateTextBlocks(file, bufio.ScanRunes)
+			if err != nil {
+				log.Fatal(err)
+			}
+			ex = extractor.ShallowTextExtractor{}
 		} else {
 			log.Fatal("Missing split argument")
 		}
@@ -34,7 +44,7 @@ func main() {
 		// Returns all text
 		ex = &extractor.AllTextExtractor{}
 	}
-	res, err := ex.Process(file)
+	res, err := ex.Process(blocks)
 	if err != nil {
 		log.Fatal("Extractor failed")
 	}
