@@ -1,11 +1,12 @@
-package boilertext
+package extractor
 
 import (
 	"bufio"
 	"io"
 	"strings"
 
-	"github.com/PageDash/boilertext/logger"
+	"github.com/PageDash/boilertext/pkg"
+	"github.com/PageDash/boilertext/pkg/util"
 )
 
 // ShallowTextExtractor is an implementation of BoilerText
@@ -22,17 +23,17 @@ func NewShallowTextExtractor(splitStrategy bufio.SplitFunc) *ShallowTextExtracto
 
 // Process takes raw HTML as an input and returns content text of that HTML minus the boilerplate.
 func (s ShallowTextExtractor) Process(reader io.Reader) (string, error) {
-	blocks, err := GenerateTextBlocks(reader, s.splitStrategy)
+	blocks, err := boilertext.GenerateTextBlocks(reader, s.splitStrategy)
 	if err != nil {
 		return "", err
 	}
 
 	// Block processing complete. Let's gather the wheat and discard the chaff.
 	var contentText string
-	var curr, prev, next *TextBlock
+	var curr, prev, next *boilertext.TextBlock
 	for i := range blocks {
 		curr = blocks[i]
-		logger.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", curr.Content)
+		util.Println("Block content", "NumOfWords", curr.NumOfWords, "NumOfAnchorWords", curr.NumOfAnchorWords, "Content", curr.Content)
 
 		if i == 0 {
 			prev = nil

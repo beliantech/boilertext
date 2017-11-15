@@ -1,4 +1,4 @@
-package boilertext
+package extractor
 
 import (
 	"bufio"
